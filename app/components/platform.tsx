@@ -1,3 +1,5 @@
+import UpcomingArrival from './upcomingArrival';
+
 import React, {useState} from 'react';
 import {
   View,
@@ -10,17 +12,14 @@ interface Props {
 
 const Platform: React.FC<Props> = ({ name }) => {
   return (
-    <View className="bg-white rounded-lg flex flex-col py-1 px-2 my-1">
+    <View className="bg-white rounded-lg flex flex-col py-1 px-3 my-1.5">
         <Text className="text-xl mb-1">
             { name }
         </Text>
-        <View className="flex flex-row gap-2 mb-1">
-            <Text className="text-sm">
-                3 min
-            </Text>
-            <Text className="text-sm">
-                8 min
-            </Text>
+        <View className="flex flex-row gap-2">
+            <UpcomingArrival train="A" time="3 min" />
+            <UpcomingArrival train="A" time="8 min" />
+            <UpcomingArrival train="A" time="17 min" />
         </View>
     </View>
   );

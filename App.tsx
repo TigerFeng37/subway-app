@@ -24,12 +24,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-
-
-
 function App(): JSX.Element {
   return (
-    <SafeAreaView className="bg-white">
+    <SafeAreaView className="bg-blue-100">
       <Index />
     </SafeAreaView>
   );

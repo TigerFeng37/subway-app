@@ -2,7 +2,20 @@
 module.exports = {
   content: ["./App.tsx", "./app/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'mta-blue': '#0039a6',
+        'mta-orange': '#ff6319',
+        'mta-lime': '#6cbe45',
+        'mta-gray': '#a7a9ac',
+        'mta-brown': '#996633',
+        'mta-yellow': '#fccc0a',
+        'mta-red': '#ee352e',
+        'mta-green': '#00933c',
+        'mta-purple': '#b933ad',
+        'mta-dark-gray': '#808183'
+      }
+    }
   },
   plugins: [],
 }
