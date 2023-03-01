@@ -1,4 +1,5 @@
 import Bullet from './bullet';
+import styles from '../styles/styles';
 
 import React, {useState} from 'react';
 import {
@@ -16,7 +17,7 @@ const UpcomingArrivalSmall: React.FC<Props> = ({ train, time, destination }) => 
   return (
     <View className="bg-white w-full flex flex-row py-1 pl-2 my-1 justify-between items-center">
         <View className="flex flex-row items-center justify-start">
-            <Bullet letter={ train } color="mta-blue" />
+            <Bullet letter={ train } color={styles[train].color} />
             <Text className="ml-2 mb-1 font-medium">
                 { destination }
             </Text>

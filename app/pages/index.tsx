@@ -1,7 +1,9 @@
 import Platform from '../components/platform';
 import SimpleStation from '../components/simpleStation';
+import { StationApi } from '../api/station';
+import StationType from '../../types/Station';
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -14,11 +16,11 @@ import {
 
 const Index = () => {
 
-    const stationData = {
+    const dummyStation: StationType = {
         name: "Nostrand Ave",
         distance: ".25 mi",
-        platforms: [
-            {
+        platforms: {
+            "Manhattan": {
                 heading: "Manhattan",
                 departures: [
                     {
@@ -39,7 +41,7 @@ const Index = () => {
                     }
                 ]
             },
-            {
+            "Queens": {
                 heading: "Queens",
                 departures: [
                     {
@@ -60,10 +62,34 @@ const Index = () => {
                     }
                 ]
             }
-        ]
-    }
+        }
+    };
 
+    const [stationData, setStationData] = useState<StationType>(dummyStation);
     const [expandedPlatform, setExpandedPlatform] = useState("");
+
+    async function fetchData() {
+        try {
+            const result = await StationApi.get();
+            if (result !== undefined && result !== null) {
+                console.log(result.platforms);
+                setStationData(result);
+            };
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+
+    // refresh data every minute
+    const MINUTE_MS = 60000;
+    useEffect(() => {
+        fetchData();
+        const interval = setInterval(() => {
+            fetchData();
+        }, MINUTE_MS);
+        return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    }, [])
 
     return (
     <>
@@ -74,30 +100,33 @@ const Index = () => {
     /> */}
     <ScrollView contentInsetAdjustmentBehavior="automatic" scrollEnabled={false} >
         {/* <Header /> */}
+        
         <View className="h-screen w-screen px-8 bg-blue-100 justify-center">
-            <View className="flex flex-col items-center mb-32">
-                <View className="rounded-xl bg-stone-100 w-full pt-1.5 pb-3 px-4 flex flex-col">
-                    <View className="flex flex-row w-full justify-between items-center">
-                        <Text className="font-medium text-xl">
-                            {stationData.name}
-                        </Text>
-                        <Text className="text-lg">
-                            {stationData.distance}
-                        </Text>
+            {stationData.platforms !== undefined ? 
+                <View className="flex flex-col items-center mb-32">
+                    <View className="rounded-xl bg-stone-100 w-full pt-1.5 pb-3 px-4 flex flex-col">
+                        <View className="flex flex-row w-full justify-between items-center">
+                            <Text className="font-medium text-xl">
+                                {stationData.name}
+                            </Text>
+                            <Text className="text-lg">
+                                {stationData.distance}
+                            </Text>
+                        </View>
+                        {Object.keys(stationData.platforms).map( (key, index) =>
+                                <Platform
+                                    data = {stationData.platforms[key]}
+                                    isExpanded = {expandedPlatform === key}
+                                    onShow = {() => setExpandedPlatform(key)}
+                                    onHide = {() => setExpandedPlatform("")}
+                                />
+                            )
+                        }
                     </View>
-                    {stationData.platforms.map((prop) => {
-                        return (
-                            <Platform
-                                data = {prop}
-                                isExpanded = {expandedPlatform === prop.heading}
-                                onShow = {() => setExpandedPlatform(prop.heading)}
-                                onHide = {() => setExpandedPlatform("")}
-                            />
-                        );
-                    })}
+                    {expandedPlatform === "" ? <SimpleStation name="Bedford-Nostrand Avs" distance=".35 mi" trains="G"/> : null}
                 </View>
-                {expandedPlatform === "" ? <SimpleStation name="Bedford-Nostrand Avs" distance=".35 mi" trains="G"/> : null}
-            </View>
+            : null
+            }
         </View>
     </ScrollView>
     </>

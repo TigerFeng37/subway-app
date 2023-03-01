@@ -1,5 +1,6 @@
 import UpcomingArrivalSmall from './upcomingArrivalSmall';
 import UpcomingArrivalLarge from './upcomingArrivalLarge';
+import PlatformType from '../../types/Platform';
 
 import React, {useState} from 'react';
 import {
@@ -9,10 +10,7 @@ import {
 } from 'react-native';
 
 interface Props {
-    data: {
-        heading: string,
-        departures: Array<{ train: string; time: string }>
-    };
+    data: PlatformType;
     isExpanded: boolean;
     onShow: () => void;
     onHide: () => void;
@@ -35,7 +33,7 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, onHide }) => {
           
           { isExpanded ? 
             <View className="flex flex-col gap-2 mt-1">
-              {data.departures.map((prop, key) => {
+              {data.departures.slice(0, 8).map((prop, key) => {
                 return (
                   <UpcomingArrivalLarge train={prop.train} time={prop.time} destination="destination" />
                 );
@@ -43,7 +41,7 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, onHide }) => {
             </View>
           : 
             <View className="flex flex-row gap-2">
-              {data.departures.map((prop, key) => {
+              {data.departures.slice(0, 5).map((prop, key) => {
                 return (
                   <UpcomingArrivalSmall train={prop.train} time={prop.time} />
                 );
