@@ -11,7 +11,7 @@ interface Props {
     time: string;
   }
 
-const UpcomingArrival: React.FC<Props> = ({ train, time }) => {
+const UpcomingArrivalSmall: React.FC<Props> = ({ train, time }) => {
   return (
     <View className="bg-white rounded-lg flex flex-col py-1 px-2 my-1 items-center">
         <Bullet letter={ train } color="mta-blue" />
@@ -21,4 +21,4 @@ const UpcomingArrival: React.FC<Props> = ({ train, time }) => {
     </View>
   );
 };
-export default UpcomingArrival;
+export default UpcomingArrivalSmall;
