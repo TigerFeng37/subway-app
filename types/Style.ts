@@ -1,3 +1,6 @@
 export default interface StyleType {
-    [ key:string ]: {color: string}
+    [ key:string ]: {
+        letter: string,
+        bgColor: string
+    }
 }

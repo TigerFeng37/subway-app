@@ -1,4 +1,5 @@
 import Bullet from './bullet';
+import styles from '../styles/styles';
 
 import React, {useState} from 'react';
 import {
@@ -9,7 +10,7 @@ import {
 interface Props {
     name: string;
     distance: string;
-    trains: string;
+    trains: Array<string>;
   }
 
 const SimpleStation: React.FC<Props> = ({ name, distance, trains }) => {
@@ -23,8 +24,12 @@ const SimpleStation: React.FC<Props> = ({ name, distance, trains }) => {
                 { distance }
             </Text>
         </View>
-        <View className="pt-1">
-            <Bullet letter={ trains } color="mta-lime" />
+        <View className="pt-1 flex flex-row">
+            {trains.map((train) => 
+              <View className="mr-2">
+                <Bullet letter={ styles[train].letter } color={styles[train].bgColor} />
+              </View>
+            )}
         </View>
     </View>
   );

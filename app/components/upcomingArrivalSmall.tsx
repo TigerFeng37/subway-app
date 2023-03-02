@@ -15,7 +15,7 @@ interface Props {
 const UpcomingArrivalSmall: React.FC<Props> = ({ train, time }) => {
   return (
     <View className="bg-white rounded-lg flex flex-col py-1 px-2 my-1 items-center">
-        <Bullet letter={ train } color={styles[train].color}/>
+        <Bullet letter={ styles[train].letter } color={styles[train].bgColor}/>
         <Text className="mt-1">
             { time }
         </Text>

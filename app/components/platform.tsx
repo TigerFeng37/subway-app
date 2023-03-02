@@ -35,7 +35,7 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, onHide }) => {
             <View className="flex flex-col gap-2 mt-1">
               {data.departures.slice(0, 8).map((prop, key) => {
                 return (
-                  <UpcomingArrivalLarge train={prop.train} time={prop.time} destination="destination" />
+                  <UpcomingArrivalLarge train={prop.train} time={prop.time} destination={prop.destination} />
                 );
               })}
             </View>

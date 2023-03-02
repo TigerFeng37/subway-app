@@ -13,8 +13,8 @@ interface Props {
 
 const UpcomingArrival: React.FC<Props> = ({ letter, color }) => {
   return (
-    <View className={`bg-${color} rounded-full w-8 h-8`}>
-        <Text className="font-medium text-white text-2xl my-auto text-center">
+    <View className={`${color} rounded-full w-7 h-7`}>
+        <Text className="font-medium text-white text-xl my-auto text-center">
             { letter }
         </Text>
     </View>
