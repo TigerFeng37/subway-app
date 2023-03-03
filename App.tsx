@@ -5,9 +5,9 @@
  * @format
  */
 
- import Index from './app/pages/index';
+import Index from './app/pages/index';
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -25,9 +25,16 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 function App(): JSX.Element {
+
+  const [backgroundColor, setBackgroundColor] = useState('bg-white');
+
+  const updateBackgroundColor = (color: string) => {
+    setBackgroundColor(color);
+  };
+
   return (
-    <SafeAreaView className="bg-blue-100">
-      <Index />
+    <SafeAreaView className = {`${backgroundColor}`}>
+      <Index updateBackgroundColor={updateBackgroundColor} />
     </SafeAreaView>
   );
 }

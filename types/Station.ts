@@ -4,6 +4,6 @@ export default interface StationType {
     id: string;
     name: string;
     trains: Array<string>;
-    distance: string;
+    distance: number;
     platforms: Record<string, PlatformType>;
 }

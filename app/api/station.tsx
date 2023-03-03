@@ -1,5 +1,4 @@
 import StationType from '../../types/Station';
-import StationListType from '../../types/StationList';
 
 export const StationApi = {
     get: async function () {
@@ -34,8 +33,28 @@ export const StationApi = {
         // const longitude = -73.9576139;
 
         //grand central
-        const latitude = 40.7521678;
-        const longitude = -73.9763401;
+        // const latitude = 40.7521678;
+        // const longitude = -73.9763401;
+
+        //299 putnam
+        // const latitude = 40.684220;
+        // const longitude = -73.949817;
+
+        //hoyt schermerhorn
+        const latitude = 40.6888286;
+        const longitude = -73.985126;
+
+        //Jay st metrotech
+        // const latitude = 40.692265;
+        // const longitude = -73.9864207;
+
+        //Bergen st
+        // const latitude = 40.6854157;
+        // const longitude = -73.9915024;
+
+        //Church Av
+        // const latitude = 40.6437108;
+        // const longitude = -73.9796123;
 
         try {
             const response = await fetch(`${baseUrl}?latitude=${latitude}&longitude=${longitude}`, {
@@ -51,8 +70,6 @@ export const StationApi = {
             
             const data = await response.json();
 
-            //console.log(data.data);
-
             //todo: check length of response
 
             let result: Record<string, StationType> = {};
@@ -60,17 +77,6 @@ export const StationApi = {
             for (const el of data.data) {
                 result[el.id] = el; 
             }
-
-            // const d = {
-            //     data.data[0]: data.data[0],
-            //     next: data.data[1],
-            // } as Record<>;
-
-            //d.sort((a, b) => a.distance < b.distance ? -1 : a.distance > b.distance ? 1 : 0);
-
-            console.log(result);
-
-            //return null;
 
             return result;
 
