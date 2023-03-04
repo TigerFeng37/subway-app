@@ -33,16 +33,16 @@ export const StationApi = {
         // const longitude = -73.9576139;
 
         //grand central
-        // const latitude = 40.7521678;
-        // const longitude = -73.9763401;
+        const latitude = 40.7521678;
+        const longitude = -73.9763401;
 
         //299 putnam
         // const latitude = 40.684220;
         // const longitude = -73.949817;
 
         //hoyt schermerhorn
-        const latitude = 40.6888286;
-        const longitude = -73.985126;
+        //const latitude = 40.6888286;
+        //const longitude = -73.985126;
 
         //Jay st metrotech
         // const latitude = 40.692265;
