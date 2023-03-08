@@ -1,130 +1,201 @@
 import StyleType from "../../types/Style";
 
-const styles: StyleType = {
+const styles: Record<string, StyleType> = {
     'A': {
         letter: 'A',
+        diamond: false,
         bgColor: 'bg-mta-blue',
-        accentBgColor: 'bg-blue-100'
+        accentBgColor: 'bg-blue-100',
+        darkAccentBgColor: 'bg-blue-200',
     },
     'C': {
         letter: 'C',
+        diamond: false,
         bgColor: 'bg-mta-blue',
-        accentBgColor: 'bg-blue-100'
+        accentBgColor: 'bg-blue-100',
+        darkAccentBgColor: 'bg-blue-200',
     },
     'E': {
         letter: 'E',
+        diamond: false,
         bgColor: 'bg-mta-blue',
-        accentBgColor: 'bg-blue-100'
+        accentBgColor: 'bg-blue-100',
+        darkAccentBgColor: 'bg-blue-200',
     },
     'B': {
         letter: 'B',
+        diamond: false,
         bgColor: 'bg-mta-orange',
-        accentBgColor: 'bg-orange-100'
+        accentBgColor: 'bg-orange-100',
+        darkAccentBgColor: 'bg-blue-200',
     },
     'D': {
         letter: 'D',
+        diamond: false,
         bgColor: 'bg-mta-orange',
-        accentBgColor: 'bg-orange-100'
+        accentBgColor: 'bg-orange-100',
+        darkAccentBgColor: 'bg-orange-200',
     },
     'F': {
         letter: 'F',
+        diamond: false,
         bgColor: 'bg-mta-orange',
-        accentBgColor: 'bg-orange-100'
+        accentBgColor: 'bg-orange-100',
+        darkAccentBgColor: 'bg-orange-200',
+    },
+    'FX': {
+      letter: 'F',
+      diamond: true,
+      bgColor: 'bg-mta-orange',
+      accentBgColor: 'bg-orange-100',
+      darkAccentBgColor: 'bg-orange-200',
     },
     'M': {
         letter: 'M',
+        diamond: false,
         bgColor: 'bg-mta-orange',
-        accentBgColor: 'bg-orange-100'
+        accentBgColor: 'bg-orange-100',
+        darkAccentBgColor: 'bg-orange-200',
     },
     'G': {
         letter: 'G',
+        diamond: false,
         bgColor: 'bg-mta-lime',
-        accentBgColor: 'bg-green-100'
+        accentBgColor: 'bg-green-100',
+        darkAccentBgColor: 'bg-green-200',
     },
     'L': {
         letter: 'L',
+        diamond: false,
         bgColor: 'bg-mta-gray',
-        accentBgColor: 'bg-gray-100'
+        accentBgColor: 'bg-gray-100',
+        darkAccentBgColor: 'bg-gray-200',
     },
     'N': {
         letter: 'N',
+        diamond: false,
         bgColor: 'bg-mta-yellow',
-        accentBgColor: 'bg-yellow-100'
+        accentBgColor: 'bg-yellow-100',
+        darkAccentBgColor: 'bg-yellow-200',
     },
     'Q': {
         letter: 'Q',
+        diamond: false,
         bgColor: 'bg-mta-yellow',
-        accentBgColor: 'bg-yellow-100'
+        accentBgColor: 'bg-yellow-100',
+        darkAccentBgColor: 'bg-yellow-200',
     },
     'R': {
-        letter: 'R',
-        bgColor: 'bg-mta-yellow',
-        accentBgColor: 'bg-yellow-100'
+      letter: 'R',
+      diamond: false,
+      bgColor: 'bg-mta-yellow',
+      accentBgColor: 'bg-yellow-100',
+      darkAccentBgColor: 'bg-yellow-200',
     },
     'W': {
-        letter: 'W',
-        bgColor: 'bg-mta-yellow',
-        accentBgColor: 'bg-yellow-100'
+      letter: 'W',
+      diamond: false,
+      bgColor: 'bg-mta-yellow',
+      accentBgColor: 'bg-yellow-100',
+      darkAccentBgColor: 'bg-yellow-200',
     },
     'J': {
-        letter: 'J',
-        bgColor: 'bg-mta-brown',
-        accentBgColor: 'bg-brown-100'
+      letter: 'J',
+      diamond: false,
+      bgColor: 'bg-mta-brown',
+      accentBgColor: 'bg-brown-100',
+      darkAccentBgColor: 'bg-brown-200',
     },
     'Z': {
-        letter: 'Z',
-        bgColor: 'bg-mta-brown',
-        accentBgColor: 'bg-brown-100'
+      letter: 'Z',
+      diamond: false,
+      bgColor: 'bg-mta-brown',
+      accentBgColor: 'bg-brown-100',
+      darkAccentBgColor: 'bg-brown-200',
     },
     '1': {
-        letter: '1',
-        bgColor: 'bg-mta-red',
-        accentBgColor: 'bg-red-100'
+      letter: '1',
+      diamond: false,
+      bgColor: 'bg-mta-red',
+      accentBgColor: 'bg-red-100',
+      darkAccentBgColor: 'bg-red-200',
     },
     '2': {
-        letter: '2',
-        bgColor: 'bg-mta-red',
-        accentBgColor: 'bg-red-100'
+      letter: '2',
+      diamond: false,
+      bgColor: 'bg-mta-red',
+      accentBgColor: 'bg-red-100',
+      darkAccentBgColor: 'bg-red-200',
     },
     '3': {
-        letter: '3',
-        bgColor: 'bg-mta-red',
-        accentBgColor: 'bg-red-100'
+      letter: '3',
+      diamond: false,
+      bgColor: 'bg-mta-red',
+      accentBgColor: 'bg-red-100',
+      darkAccentBgColor: 'bg-red-200',
     },
     '4': {
-        letter: '4',
-        bgColor: 'bg-mta-green',
-        accentBgColor: 'bg-green-100'
+      letter: '4',
+      diamond: false,
+      bgColor: 'bg-mta-green',
+      accentBgColor: 'bg-green-100',
+      darkAccentBgColor: 'bg-green-200',
     },
     '5': {
-        letter: '5',
-        bgColor: 'bg-mta-green',
-        accentBgColor: 'bg-green-100'
+      letter: '5',
+      diamond: false,
+      bgColor: 'bg-mta-green',
+      accentBgColor: 'bg-green-100',
+      darkAccentBgColor: 'bg-green-200',
     },
     '6': {
-        letter: '6',
-        bgColor: 'bg-mta-green',
-        accentBgColor: 'bg-green-100'
+      letter: '6',
+      diamond: false,
+      bgColor: 'bg-mta-green',
+      accentBgColor: 'bg-green-100',
+      darkAccentBgColor: 'bg-green-200',
+    },
+    '6X': {
+      letter: '6',
+      diamond: true,
+      bgColor: 'bg-mta-green',
+      accentBgColor: 'bg-green-100',
+      darkAccentBgColor: 'bg-green-200',
     },
     '7': {
-        letter: '7',
-        bgColor: 'bg-mta-purple',
-        accentBgColor: 'bg-purple-100'
+      letter: '7',
+      diamond: false,
+      bgColor: 'bg-mta-purple',
+      accentBgColor: 'bg-purple-100',
+      darkAccentBgColor: 'bg-purple-200',
     },
+    '7X': {
+      letter: '7',
+      diamond: true,
+      bgColor: 'bg-mta-purple',
+      accentBgColor: 'bg-purple-100',
+      darkAccentBgColor: 'bg-purple-200',
+  },
     'FS': {
         letter: 'S',
+        diamond: false,
         bgColor: 'bg-mta-dark-gray',
-        accentBgColor: 'bg-gray-200'
+        accentBgColor: 'bg-gray-200',
+        darkAccentBgColor: 'bg-gray-300',
     },
     'GS': {
         letter: 'S',
+        diamond: false,
         bgColor: 'bg-mta-dark-gray',
-        accentBgColor: 'bg-gray-200'
+        accentBgColor: 'bg-gray-200',
+        darkAccentBgColor: 'bg-gray-300',
     },
     'H': {
         letter: 'S',
+        diamond: false,
         bgColor: 'bg-mta-dark-gray',
-        accentBgColor: 'bg-gray-200'
+        accentBgColor: 'bg-gray-200',
+        darkAccentBgColor: 'bg-gray-300',
     },
 }
 export default styles;

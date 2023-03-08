@@ -19,7 +19,7 @@ interface Props {
 const SimpleStation: React.FC<Props> = ({ name, distance, trains, onShow }) => {
 
   const first = trains.find(Boolean);
-  const bgColor = first !== undefined ? styles[first].accentBgColor : 'bg-white';
+  const bgColor = first !== undefined ? styles[first].darkAccentBgColor : 'bg-white';
 
   return (
     <TouchableOpacity onPress={onShow} className="w-full">
@@ -33,7 +33,7 @@ const SimpleStation: React.FC<Props> = ({ name, distance, trains, onShow }) => {
           <View className="pt-1 flex flex-row">
             {trains.map((train) => 
               <View key={train} className="mr-2">
-                <Bullet letter={ styles[train].letter } color={styles[train].bgColor} />
+                <Bullet style={styles[train]} />
               </View>
             )}
           </View>

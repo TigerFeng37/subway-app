@@ -1,7 +1,7 @@
 export default interface StyleType {
-    [ key:string ]: {
-        letter: string,
-        bgColor: string,
-        accentBgColor: string,
-    }
+  letter: string,
+  diamond: boolean,
+  bgColor: string,
+  accentBgColor: string,
+  darkAccentBgColor: string,
 }

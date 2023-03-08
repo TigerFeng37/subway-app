@@ -14,6 +14,12 @@ module.exports = {
         'mta-green': '#00933c',
         'mta-purple': '#b933ad',
         'mta-dark-gray': '#808183'
+      },
+      minHeight: {
+        '1/10': '10%',
+        '1/4': '25%',
+        '1/3': '33%',
+        '1/2': '50%',
       }
     }
   },

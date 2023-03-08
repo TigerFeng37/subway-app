@@ -35,13 +35,16 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
         if (result !== undefined && result !== null) {
           setStationList(result);
 
-          //order the stations by distance and set which station is expanded
-          if (detailedStationId === "" || !Object.keys(result).includes(detailedStationId)) {      
+          // order the stations by distance and set which station is expanded
+          if (!Object.keys(result).includes(detailedStationId)) {
+
             const stationDistances = Object.keys(result).map( (key, index) => {
               return {stationId: key, distance: result[key].distance}
             });
             stationDistances.sort((a, b) => a.distance - b.distance);      
             setDetailedStationId(stationDistances[0].stationId);
+
+            setExpandedPlatform("");
 
             const train = result[stationDistances[0].stationId].trains.find(Boolean);
             if (train !== undefined) {
@@ -54,46 +57,50 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
     }
   };
 
-  // refresh data every minute
-  const MINUTE_MS = 60000;
+  // refresh data every 30 seconds
+  const REFRESH_MS = 30000;
   useEffect(() => {
     fetchStations();
-
     const interval = setInterval(() => {
       fetchStations();
-    }, MINUTE_MS);
-
+    }, REFRESH_MS);
     return () => clearInterval(interval) // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
-  }, [])
+  }, [detailedStationId])
 
   return (
+    <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")}>
     <View className={`h-screen w-screen px-8 justify-center`}>
       <View className="flex flex-col items-center mb-32">
-        {(stationList !== undefined && detailedStationId !== "") ?
-          <>
-            <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col">
-              <View className="flex flex-row w-full justify-between items-center">
-                <Text className="font-medium text-xl">
-                  {stationList[detailedStationId].name}
-                </Text>
-                <Distance distance = {stationList[detailedStationId].distance} />
-              </View>
-              { stationList[detailedStationId].platforms !== undefined ? 
+        {(stationList !== undefined && detailedStationId !== undefined && stationList[detailedStationId] !== undefined) ?
+          <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col">
+            <View className="flex flex-row w-full justify-between items-center">
+              {stationList[detailedStationId] !== undefined ? 
                 <>
-                  {Object.keys(stationList[detailedStationId].platforms).map( (key, index) =>
-                    (expandedPlatform !== key && expandedPlatform !== "") ?  null :
-                      <Platform
-                          key = {stationList[detailedStationId].platforms[key].heading}
-                          data = {stationList[detailedStationId].platforms[key]}
-                          isExpanded = {expandedPlatform === key}
-                          onShow = {() => setExpandedPlatform(key)}
-                          onHide = {() => setExpandedPlatform("")}
-                      />
-                    )
-                  }
+                  <Text className="font-medium text-xl">
+                    {stationList[detailedStationId].name}
+                  </Text>
+                  <Distance distance = {stationList[detailedStationId].distance} />
                 </>
-              : null }
+                : null
+              }
             </View>
+            {Object.keys(stationList[detailedStationId].platforms).map( (key, index) =>
+              (expandedPlatform !== key && expandedPlatform !== "") ?  null :
+                <Platform
+                    key = {stationList[detailedStationId].platforms[key].heading}
+                    data = {stationList[detailedStationId].platforms[key]}
+                    isExpanded = {expandedPlatform === key}
+                    onShow = {() => setExpandedPlatform(key)}
+                />
+              )
+            }
+          </View>
+        :
+          <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col min-h-1/3">
+          </View>
+        }
+        {(stationList !== undefined && detailedStationId !== undefined) ?
+          <>
             {expandedPlatform === "" ? 
               <>
                 {Object.keys(stationList).map( (key, index) => {
@@ -114,13 +121,16 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
                   }
                 })}
               </>
-            : null }          
+              : null
+            }
           </>
-        :
-          <Loading />
+          : 
+          <View className="rounded-xl bg-stone-100 min-h-1/10 shadow w-full pt-1.5 pb-3 px-4 mt-6">
+          </View>
         }
       </View>
     </View>
+    </TouchableOpacity>
   )
 };
 

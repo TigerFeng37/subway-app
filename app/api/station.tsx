@@ -33,20 +33,20 @@ export const StationApi = {
         // const longitude = -73.9576139;
 
         //grand central
-        const latitude = 40.7521678;
-        const longitude = -73.9763401;
+        // const latitude = 40.7521678;
+        // const longitude = -73.9763401;
 
         //299 putnam
         // const latitude = 40.684220;
         // const longitude = -73.949817;
 
         //hoyt schermerhorn
-        //const latitude = 40.6888286;
-        //const longitude = -73.985126;
+        // const latitude = 40.6888286;
+        // const longitude = -73.985126;
 
         //Jay st metrotech
-        // const latitude = 40.692265;
-        // const longitude = -73.9864207;
+        const latitude = 40.692265;
+        const longitude = -73.9864207;
 
         //Bergen st
         // const latitude = 40.6854157;
@@ -55,6 +55,18 @@ export const StationApi = {
         //Church Av
         // const latitude = 40.6437108;
         // const longitude = -73.9796123;
+
+        //jackson heights
+        // const latitude = 40.746657;
+        // const longitude = -73.890488;
+
+        //woodside
+        // const latitude = 40.745531;
+        // const longitude = -73.902948;
+
+        //tremont ave
+        // const latitude = 40.850276;
+        // const longitude = -73.905297;
 
         try {
             const response = await fetch(`${baseUrl}?latitude=${latitude}&longitude=${longitude}`, {
