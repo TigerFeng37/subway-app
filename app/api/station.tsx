@@ -2,31 +2,7 @@ import StationType from '../../types/Station';
 
 export const StationApi = {
     get: async function () {
-        const url = "http://127.0.0.1:8000/api/departures/A41";
-        try {
-            const response = await fetch(url, {
-                method: "GET",
-                headers: { 'Content-Type': 'application/json' },
-            });
-
-            if (response.status >= 300 || response.status < 200) {
-                throw new Error(
-                    `Error submitting GET on /station endpoint with status code ${response.status} and message `
-                );
-            }
-            
-            const data = await response.json();
-            let d = data.data as StationType;
-
-            return d;
-        } catch (e) {
-            console.log(e);
-            return null;
-        }
-    },
-
-    closest: async function () {
-        const baseUrl = "http://127.0.0.1:8000/api/stations";
+        const baseUrl = process.env.BASE_URL + '/api/stations';
         
         //crown heights
         // const latitude = 40.672277;
@@ -69,7 +45,7 @@ export const StationApi = {
         // const longitude = -73.905297;
 
         try {
-            const response = await fetch(`${baseUrl}?latitude=${latitude}&longitude=${longitude}`, {
+            const response = await fetch(`http://${baseUrl}?latitude=${latitude}&longitude=${longitude}`, {
                 method: "GET",
                 headers: { 'Content-Type': 'application/json' },
             });

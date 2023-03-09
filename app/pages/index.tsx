@@ -4,6 +4,7 @@ import { StationApi } from '../api/station';
 import StationType from '../../types/Station';
 import styles from '../styles/styles';
 import Loading from '../components/loading';
+import Distance from '../components/distance';
 
 import React, {useState, useEffect} from 'react';
 import {
@@ -17,7 +18,6 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import Distance from '../components/distance';
 
 interface Props {
   updateBackgroundColor: (str: string) => void;
@@ -31,7 +31,7 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
     
   async function fetchStations() {
     try {
-      const result = await StationApi.closest();
+      const result = await StationApi.get();
         if (result !== undefined && result !== null) {
           setStationList(result);
 
