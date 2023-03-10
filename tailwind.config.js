@@ -13,7 +13,9 @@ module.exports = {
         'mta-red': '#ee352e',
         'mta-green': '#00933c',
         'mta-purple': '#b933ad',
-        'mta-dark-gray': '#808183'
+        'mta-dark-gray': '#808183',
+        'g-accent': '#E7F4E1',
+        'g-dark-accent': '#B8DDA6',
       },
       minHeight: {
         '1/10': '10%',

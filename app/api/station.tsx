@@ -15,13 +15,11 @@ export const StationApi = {
           console.warn(e);
           return null;
         }
+        const { latitude, longitude } = location;
 
         const apiUrl = '143.244.163.173';
-
         const baseUrl = apiUrl + '/api/stations';
 
-        const { latitude, longitude } = location;
-        
         //crown heights
         // const latitude = 40.672277;
         // const longitude = -73.9576139;

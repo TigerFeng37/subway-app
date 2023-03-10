@@ -61,8 +61,8 @@ const styles: Record<string, StyleType> = {
         letter: 'G',
         diamond: false,
         bgColor: 'bg-mta-lime',
-        accentBgColor: 'bg-green-100',
-        darkAccentBgColor: 'bg-green-200',
+        accentBgColor: 'bg-g-accent',
+        darkAccentBgColor: 'bg-g-dark-accent',
     },
     'L': {
         letter: 'L',

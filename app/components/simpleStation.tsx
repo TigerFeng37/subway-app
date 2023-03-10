@@ -22,7 +22,7 @@ const SimpleStation: React.FC<Props> = ({ name, distance, trains, onShow }) => {
   const bgColor = first !== undefined ? styles[first].darkAccentBgColor : 'bg-white';
 
   return (
-    <TouchableOpacity onPress={onShow} className="w-full">
+    <TouchableOpacity onPress={onShow} className="w-full" activeOpacity={0.8}>
       <View className={`rounded-xl ${bgColor} shadow w-full pt-1.5 pb-3 px-4 mt-6 flex flex-col`}>
           <View className="flex flex-row w-full justify-between items-center">
               <Text className="font-medium text-xl">

@@ -77,12 +77,17 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
     <>
     {outsideRegion ?
       <View className={`h-screen w-screen px-8 justify-center`}>
-        <Text className="text-xl mx-auto mb-16">
-          You are too far from the city!
-        </Text>
+        <View className="flex flex-col w-full gap-2 mx-auto mb-16 items-center py-3 bg-gray-200 rounded-xl shadow">
+          <Text className="text-xl">
+            You are too far from the city!
+          </Text>
+          <Text className="text-md pb-3">
+            (Come back we miss you)
+          </Text>
+        </View>
       </View>
     :
-    <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")}>
+    <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")} activeOpacity={0.8}>
     <View className={`h-screen w-screen px-8 justify-center`}>
       <View className="flex flex-col items-center mb-32">
         {(stationList !== undefined && detailedStationId !== undefined && stationList[detailedStationId] !== undefined) ?

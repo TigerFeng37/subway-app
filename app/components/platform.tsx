@@ -18,11 +18,11 @@ interface Props {
 
 const Platform: React.FC<Props> = ({ data, isExpanded, onShow }) => {
   return (
-    <TouchableOpacity onPress={onShow} disabled={isExpanded}>
+    <TouchableOpacity onPress={onShow} disabled={isExpanded} activeOpacity={0.8}>
       <TouchableWithoutFeedback disabled={!isExpanded} >
         <View className="bg-white shadow-sm rounded-lg flex flex-col py-1 px-3 my-1.5">
             <View className="flex flex-row justify-between items-center">
-              <Text className="text-xl mb-1.5">
+              <Text className="text-xl mb-2">
                   { data.heading }
               </Text>
             </View>

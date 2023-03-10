@@ -26,7 +26,7 @@ const UpcomingArrival: React.FC<Props> = ({ style }) => {
           </View>
         </View>
       :
-        <View className={`${style.bgColor} rounded-full w-7 h-7`}>
+        <View className={`${style.bgColor} rounded-full w-8 h-8`}>
           <Text className="font-medium text-white text-xl my-auto text-center">
             { style.letter }
           </Text>
