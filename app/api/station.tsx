@@ -1,8 +1,26 @@
 import StationType from '../../types/Station';
 
+import GetLocation from 'react-native-get-location';
+
 export const StationApi = {
     get: async function () {
-        const baseUrl = process.env.BASE_URL + '/api/stations';
+        
+        let location = null;
+        try {
+          location = await GetLocation.getCurrentPosition({
+            enableHighAccuracy: true,
+            timeout: 2000,
+          });
+        } catch (e) {
+          console.warn(e);
+          return null;
+        }
+
+        const apiUrl = '143.244.163.173';
+
+        const baseUrl = apiUrl + '/api/stations';
+
+        const { latitude, longitude } = location;
         
         //crown heights
         // const latitude = 40.672277;
@@ -21,8 +39,8 @@ export const StationApi = {
         // const longitude = -73.985126;
 
         //Jay st metrotech
-        const latitude = 40.692265;
-        const longitude = -73.9864207;
+        // const latitude = 40.692265;
+        // const longitude = -73.9864207;
 
         //Bergen st
         // const latitude = 40.6854157;

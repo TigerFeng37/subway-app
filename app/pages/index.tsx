@@ -28,6 +28,7 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
   const [expandedPlatform, setExpandedPlatform] = useState("");
   const [stationList, setStationList] = useState<Record<string, StationType>>();
   const [detailedStationId, setDetailedStationId] = useState("");
+  const [outsideRegion, setOutsideRegion] = useState(false);
     
   async function fetchStations() {
     try {
@@ -43,6 +44,11 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
             });
             stationDistances.sort((a, b) => a.distance - b.distance);      
             setDetailedStationId(stationDistances[0].stationId);
+
+            if (stationDistances[0].distance > 25) {
+              setOutsideRegion(true);
+              return;
+            }
 
             setExpandedPlatform("");
 
@@ -68,6 +74,14 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
   }, [detailedStationId])
 
   return (
+    <>
+    {outsideRegion ?
+      <View className={`h-screen w-screen px-8 justify-center`}>
+        <Text className="text-xl mx-auto mb-16">
+          You are too far from the city!
+        </Text>
+      </View>
+    :
     <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")}>
     <View className={`h-screen w-screen px-8 justify-center`}>
       <View className="flex flex-col items-center mb-32">
@@ -131,7 +145,8 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
       </View>
     </View>
     </TouchableOpacity>
-  )
+  }
+  </>)
 };
 
 const Index: React.FC<Props> = ({ updateBackgroundColor }) => {

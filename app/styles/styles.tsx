@@ -197,5 +197,19 @@ const styles: Record<string, StyleType> = {
         accentBgColor: 'bg-gray-200',
         darkAccentBgColor: 'bg-gray-300',
     },
+    'SI': {
+      letter: 'S',
+      diamond: false,
+      bgColor: 'bg-mta-blue',
+      accentBgColor: 'bg-blue-100',
+      darkAccentBgColor: 'bg-blue-200',
+  },
+  'SIR': {
+    letter: 'S',
+    diamond: false,
+    bgColor: 'bg-mta-blue',
+    accentBgColor: 'bg-blue-100',
+    darkAccentBgColor: 'bg-blue-200',
+},
 }
 export default styles;
