@@ -10,11 +10,12 @@ import {
 interface Props {
     train: string;
     time: string;
+    fewArrivals: boolean;
   }
 
-const UpcomingArrivalSmall: React.FC<Props> = ({ train, time }) => {
+const UpcomingArrivalSmall: React.FC<Props> = ({ train, time, fewArrivals }) => {
   return (
-    <View className="rounded-lg flex flex-col py-1 px-2 my-1 items-center">
+    <View className={`rounded-lg flex flex-col items-center ${fewArrivals ? 'mr-3' : ''}`}>
       <Bullet style={ styles[train] } />
       <Text className="mt-1">
           { time }

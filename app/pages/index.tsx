@@ -35,10 +35,8 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
       const result = await StationApi.get();
         if (result !== undefined && result !== null) {
           setStationList(result);
-
           // order the stations by distance and set which station is expanded
           if (!Object.keys(result).includes(detailedStationId)) {
-
             const stationDistances = Object.keys(result).map( (key, index) => {
               return {stationId: key, distance: result[key].distance}
             });
@@ -49,9 +47,7 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
               setOutsideRegion(true);
               return;
             }
-
             setExpandedPlatform("");
-
             const train = result[stationDistances[0].stationId].trains.find(Boolean);
             if (train !== undefined) {
               updateBackgroundColor(styles[train].accentBgColor);
@@ -125,7 +121,7 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
                 {Object.keys(stationList).map( (key, index) => {
                   if (key !== detailedStationId) {
                     return <SimpleStation
-                        key = {stationList[key].name}
+                        key = {stationList[key].name + stationList[key].trains[0]}
                         name = {stationList[key].name}
                         distance = {stationList[key].distance}
                         trains = {stationList[key].trains}
