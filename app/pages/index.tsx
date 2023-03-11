@@ -153,18 +153,11 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
 const Index: React.FC<Props> = ({ updateBackgroundColor }) => {
   return (
     <>
-    {/* <StatusBar
-        barStyle='light-content'
-        backgroundColor="mta-blue"
-        hidden={true}
-    /> */}
-
-    <ScrollView contentInsetAdjustmentBehavior="automatic" scrollEnabled={false} >
-      {/* <Header /> */}
-
-      <Content updateBackgroundColor = {updateBackgroundColor} />
-
-    </ScrollView>
+    <StatusBar barStyle='dark-content'/> 
+      <ScrollView contentInsetAdjustmentBehavior="automatic" scrollEnabled={false} >
+        {/* <Header /> */}
+        <Content updateBackgroundColor = {updateBackgroundColor} />
+      </ScrollView>
     </>
   );
 };
