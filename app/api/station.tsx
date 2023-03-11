@@ -20,13 +20,23 @@ export const StationApi = {
         const apiUrl = '143.244.163.173';
         const baseUrl = apiUrl + '/api/stations';
 
+        //staten island
+        //const [latitude, longitude] = [40.629863, -74.082427];
+
+        // fort green
+        //const [latitude, longitude] = [40.684820, -73.968121];
+
+        //hungry ghost
+        // const latitude = 40.685999;
+        // const longitude = -73.973529;
+
         //crown heights
         // const latitude = 40.672277;
         // const longitude = -73.9576139;
 
         //grand central
-        // const latitude = 40.7521678;
-        // const longitude = -73.9763401;
+        //const latitude = 40.7521678;
+        //const longitude = -73.9763401;
 
         //299 putnam
         // const latitude = 40.684220;
