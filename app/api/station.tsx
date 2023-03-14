@@ -23,6 +23,9 @@ export const StationApi = {
         //staten island
         //const [latitude, longitude] = [40.629863, -74.082427];
 
+        //bushwick
+        //const [latitude, longitude] = [40.683505, -73.975521];
+        
         // fort green
         //const [latitude, longitude] = [40.684820, -73.968121];
 

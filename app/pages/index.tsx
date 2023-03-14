@@ -88,10 +88,10 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
       <View className="flex flex-col items-center mb-32">
         {(stationList !== undefined && detailedStationId !== undefined && stationList[detailedStationId] !== undefined) ?
           <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col">
-            <View className="flex flex-row w-full justify-between items-center">
+            <View className="flex flex-row flex-wrap w-full justify-between items-center" >
               {stationList[detailedStationId] !== undefined ? 
                 <>
-                  <Text className="font-medium text-xl">
+                  <Text className="font-medium text-xl" style={{flex: 1, flexWrap: 'wrap'}}>
                     {stationList[detailedStationId].name}
                   </Text>
                   <Distance distance = {stationList[detailedStationId].distance} />

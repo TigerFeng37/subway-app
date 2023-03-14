@@ -16,6 +16,11 @@ module.exports = {
         'mta-dark-gray': '#808183',
         'g-accent': '#E7F4E1',
         'g-dark-accent': '#B8DDA6',
+        'brown-accent': '#EBD6C2',
+        'brown-dark-accent': '#DBB894',
+        'yellow-accent': '#FEF6D7',
+        'green-accent': '#DFF6E8',
+        'dark-green': '#8DD8AB',
       },
       minHeight: {
         '1/10': '10%',
