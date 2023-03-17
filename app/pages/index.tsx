@@ -11,13 +11,13 @@ import {
   View,
   Text,
   ScrollView,
-  Image,
   Animated,
   StatusBar,
-  TextInput,
   TouchableOpacity,
-  StyleSheet,
+  RefreshControl,
+  Dimensions,
 } from 'react-native';
+import StationListType from '../../types/StationList';
 
 interface Props {
   updateBackgroundColor: (str: string) => void;
@@ -26,27 +26,32 @@ interface Props {
 const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
 
   const [expandedPlatform, setExpandedPlatform] = useState("");
-  const [stationList, setStationList] = useState<Record<string, StationType>>();
+  const [stationList, setStationList] = useState<StationListType>();
   const [detailedStationId, setDetailedStationId] = useState("");
   const [outsideRegion, setOutsideRegion] = useState(false);
+  const screenHeight = Dimensions.get('window').height;
     
   async function fetchStations() {
     try {
       const result = await StationApi.get();
         if (result !== undefined && result !== null) {
-          setStationList(result);
+
+          const stationDistances = Object.keys(result).map( (key, index) => {
+            return {stationId: key, distance: result[key].distance}
+          });
+          stationDistances.sort((a, b) => a.distance - b.distance);
+          setStationList({keys: stationDistances, data: result});
+
           // order the stations by distance and set which station is expanded
-          if (!Object.keys(result).includes(detailedStationId)) {
-            const stationDistances = Object.keys(result).map( (key, index) => {
-              return {stationId: key, distance: result[key].distance}
-            });
-            stationDistances.sort((a, b) => a.distance - b.distance);      
+          if (!Object.keys(result).includes(detailedStationId)) {  
             setDetailedStationId(stationDistances[0].stationId);
 
             if (stationDistances[0].distance > 25) {
               setOutsideRegion(true);
               return;
             }
+            setOutsideRegion(false);
+
             setExpandedPlatform("");
             const train = result[stationDistances[0].stationId].trains.find(Boolean);
             if (train !== undefined) {
@@ -57,6 +62,23 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = () => {
+    setRefreshing(true);
+
+    if (!expandedPlatform && stationList !== undefined && stationList.keys !== undefined) {
+      setDetailedStationId(stationList.keys[0].stationId);
+      const train = stationList.data[stationList.keys[0].stationId].trains.find(Boolean);
+      if (train !== undefined) {
+        updateBackgroundColor(styles[train].accentBgColor);
+      }
+    }
+
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 800);
   };
 
   // refresh data every 30 seconds
@@ -83,69 +105,74 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
         </View>
       </View>
     :
-    <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")} activeOpacity={0.8}>
-    <View className={`h-screen w-screen px-8 justify-center`}>
-      <View className="flex flex-col items-center mb-32">
-        {(stationList !== undefined && detailedStationId !== undefined && stationList[detailedStationId] !== undefined) ?
-          <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col">
-            <View className="flex flex-row flex-wrap w-full justify-between items-center" >
-              {stationList[detailedStationId] !== undefined ? 
-                <>
-                  <Text className="font-medium text-xl" style={{flex: 1, flexWrap: 'wrap'}}>
-                    {stationList[detailedStationId].name}
-                  </Text>
-                  <Distance distance = {stationList[detailedStationId].distance} />
-                </>
-                : null
-              }
-            </View>
-            {Object.keys(stationList[detailedStationId].platforms).map( (key, index) =>
-              (expandedPlatform !== key && expandedPlatform !== "") ?  null :
-                <Platform
-                    key = {stationList[detailedStationId].platforms[key].heading}
-                    data = {stationList[detailedStationId].platforms[key]}
-                    isExpanded = {expandedPlatform === key}
-                    onShow = {() => setExpandedPlatform(key)}
-                />
-              )
-            }
-          </View>
-        :
-          <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col min-h-1/3">
-          </View>
-        }
-        {(stationList !== undefined && detailedStationId !== undefined) ?
-          <>
-            {expandedPlatform === "" ? 
-              <>
-                {Object.keys(stationList).map( (key, index) => {
-                  if (key !== detailedStationId) {
-                    return <SimpleStation
-                        key = {stationList[key].name + stationList[key].trains[0]}
-                        name = {stationList[key].name}
-                        distance = {stationList[key].distance}
-                        trains = {stationList[key].trains}
-                        onShow = {() => {
-                          setDetailedStationId(stationList[key].id);
-                          const train = stationList[key].trains.find(Boolean);
-                          if (train !== undefined) {
-                            updateBackgroundColor(styles[train].accentBgColor);
-                          }
-                        }}
-                    />
+    <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+      <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")} activeOpacity={0.8}>
+        <View className={`h-screen w-screen px-8 justify-center`}>
+          <View className={`flex flex-col items-center ${screenHeight < 750 ? 'mb-6' : 'mb-20'}`}>
+            {(stationList !== undefined && detailedStationId !== undefined && stationList.data[detailedStationId] !== undefined) ?
+              <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col">
+                <View className="flex flex-row flex-wrap w-full justify-between items-center" >
+                  {stationList.data[detailedStationId] !== undefined ? 
+                    <>
+                      <Text className="font-medium text-xl" style={{flex: 1, flexWrap: 'wrap'}}>
+                        {stationList.data[detailedStationId].name}
+                      </Text>
+                      <Distance distance = {stationList.data[detailedStationId].distance} />
+                    </>
+                    : null
                   }
-                })}
-              </>
-              : null
+                </View>
+                {Object.keys(stationList.data[detailedStationId].platforms).map( (key, index) =>
+                  (expandedPlatform !== key && expandedPlatform !== "") ?  null :
+                    <Platform
+                        key = {stationList.data[detailedStationId].platforms[key].heading}
+                        data = {stationList.data[detailedStationId].platforms[key]}
+                        isExpanded = {expandedPlatform === key}
+                        onShow = {() => setExpandedPlatform(key)}
+                        screenHeight = {screenHeight}
+                    />
+                  )
+                }
+              </View>
+            :
+              <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col min-h-1/3">
+              </View>
             }
-          </>
-          : 
-          <View className="rounded-xl bg-stone-100 min-h-1/10 shadow w-full pt-1.5 pb-3 px-4 mt-6">
+            {(stationList !== undefined && detailedStationId !== undefined && stationList.keys !== undefined) ?
+              <>
+                {expandedPlatform === "" ? 
+                  <>
+                    {stationList.keys.map( (key, index) => {
+                      if (key.stationId !== detailedStationId) {
+                        const thisStation = stationList.data[key.stationId];
+                        return <SimpleStation
+                            key = {thisStation.name + thisStation.trains[0]}
+                            name = {thisStation.name}
+                            distance = {thisStation.distance}
+                            trains = {thisStation.trains}
+                            screenHeight = {screenHeight}
+                            onShow = {() => {
+                              setDetailedStationId(thisStation.id);
+                              const train = thisStation.trains.find(Boolean);
+                              if (train !== undefined) {
+                                updateBackgroundColor(styles[train].accentBgColor);
+                              }
+                            }}
+                        />
+                      }
+                    })}
+                  </>
+                  : null
+                }
+              </>
+              : 
+              <View className="rounded-xl bg-stone-100 min-h-1/10 shadow w-full pt-1.5 pb-3 px-4 mt-6">
+              </View>
+            }
           </View>
-        }
-      </View>
-    </View>
-    </TouchableOpacity>
+        </View>
+      </TouchableOpacity>
+    </ScrollView>
   }
   </>)
 };
@@ -155,7 +182,6 @@ const Index: React.FC<Props> = ({ updateBackgroundColor }) => {
     <>
     <StatusBar barStyle='dark-content'/> 
       <ScrollView contentInsetAdjustmentBehavior="automatic" scrollEnabled={false} >
-        {/* <Header /> */}
         <Content updateBackgroundColor = {updateBackgroundColor} />
       </ScrollView>
     </>

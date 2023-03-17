@@ -7,31 +7,32 @@ import {
   View,
   Text,
   TouchableOpacity,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 interface Props {
   data: PlatformType;
   isExpanded: boolean;
   onShow: () => void;
+  screenHeight: number;
 }
 
-const Platform: React.FC<Props> = ({ data, isExpanded, onShow }) => {
+const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) => {
 
   const fewArrivals = (data.departures.length < 5);
 
   return (
     <TouchableOpacity onPress={onShow} disabled={isExpanded} activeOpacity={0.8}>
       <TouchableWithoutFeedback disabled={!isExpanded} >
-        <View className="bg-white shadow-sm rounded-lg flex flex-col pt-1 pb-2.5 px-3 my-1.5">
+        <View className={`bg-white shadow-sm rounded-lg flex flex-col pt-1 pb-2.5 px-3 ${screenHeight < 700 ? 'my-1' : 'my-1.5'}`}>
             <View className="flex flex-row justify-between items-center">
-              <Text className="text-xl mb-2">
+              <Text className={`text-xl ${screenHeight < 700 ? 'mb-1' : 'mb-2'}`}>
                   { data.heading }
               </Text>
             </View>
             { isExpanded ? 
               <View className="flex flex-col gap-2">
-                {data.departures.slice(0, 10).map((prop, key) => 
+                {data.departures.slice(0, screenHeight < 825 ? 9 : 11).map((prop, key) => 
                   <UpcomingArrivalLarge
                     key={prop.key}
                     train={prop.train}
@@ -42,7 +43,7 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow }) => {
               </View>
             : 
               <View className={`w-full flex flex-row ${fewArrivals ? 'justify-start' : 'justify-between'}`}>
-                {data.departures.slice(0, 5).map((prop, key) =>
+                {data.departures.slice(0, screenHeight > 900 ? 6 : 5).map((prop, key) =>
                   <UpcomingArrivalSmall
                     key={prop.key}
                     train={prop.train}
