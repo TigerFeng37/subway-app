@@ -1,9 +1,12 @@
 import StationType from '../../types/Station';
 
 import GetLocation from 'react-native-get-location';
+import { Dimensions } from 'react-native';
 
 export const StationApi = {
     get: async function () {
+
+      const largeScreen = (Dimensions.get('window').height > 825).toString();
         
         let location = null;
         try {
@@ -23,8 +26,8 @@ export const StationApi = {
         //staten island
         //const [latitude, longitude] = [40.629863, -74.082427];
 
-        //bushwick
         //const [latitude, longitude] = [40.683505, -73.975521];
+        //const [latitude, longitude] = [40.687327, -73.950908];
         
         // fort green
         //const [latitude, longitude] = [40.684820, -73.968121];
@@ -38,8 +41,8 @@ export const StationApi = {
         // const longitude = -73.9576139;
 
         //grand central
-        //const latitude = 40.7521678;
-        //const longitude = -73.9763401;
+        // const latitude = 40.7521678;
+        // const longitude = -73.9763401;
 
         //299 putnam
         // const latitude = 40.684220;
@@ -74,7 +77,7 @@ export const StationApi = {
         // const longitude = -73.905297;
 
         try {
-            const response = await fetch(`http://${baseUrl}?latitude=${latitude}&longitude=${longitude}`, {
+            const response = await fetch(`http://${baseUrl}?latitude=${latitude}&longitude=${longitude}&largeScreen=${largeScreen}`, {
                 method: "GET",
                 headers: { 'Content-Type': 'application/json' },
             });
