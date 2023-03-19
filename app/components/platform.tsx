@@ -2,7 +2,7 @@ import UpcomingArrivalSmall from './upcomingArrivalSmall';
 import UpcomingArrivalLarge from './upcomingArrivalLarge';
 import PlatformType from '../../types/Platform';
 
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -18,6 +18,8 @@ interface Props {
 }
 
 const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) => {
+
+  if (data.departures.length === 0) return null;
 
   const fewArrivals = (data.departures.length < 5);
 

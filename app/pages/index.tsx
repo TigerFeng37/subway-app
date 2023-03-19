@@ -105,7 +105,7 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
         </View>
       </View>
     :
-    <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+    <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="black" />}>
       <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")} activeOpacity={0.8}>
         <View className={`h-screen w-screen px-8 justify-center`}>
           <View className={`flex flex-col items-center ${screenHeight < 750 ? 'mb-6' : 'mb-20'}`}>
@@ -122,16 +122,19 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
                     : null
                   }
                 </View>
-                {Object.keys(stationList.data[detailedStationId].platforms).map( (key, index) =>
-                  (expandedPlatform !== key && expandedPlatform !== "") ?  null :
-                    <Platform
-                        key = {stationList.data[detailedStationId].platforms[key].heading}
-                        data = {stationList.data[detailedStationId].platforms[key]}
-                        isExpanded = {expandedPlatform === key}
-                        onShow = {() => setExpandedPlatform(key)}
-                        screenHeight = {screenHeight}
-                    />
-                  )
+                {stationList.data[detailedStationId].platforms.length === 0 ? 
+                  <Text className="mt-2 text-lg">No upcoming trains</Text>
+                  :
+                  Object.keys(stationList.data[detailedStationId].platforms).map( (key, index) =>
+                    (expandedPlatform !== key && expandedPlatform !== "") ? null :
+                      <Platform
+                          key = {stationList.data[detailedStationId].platforms[key].heading}
+                          data = {stationList.data[detailedStationId].platforms[key]}
+                          isExpanded = {expandedPlatform === key}
+                          onShow = {() => setExpandedPlatform(key)}
+                          screenHeight = {screenHeight}
+                      />
+                    )
                 }
               </View>
             :

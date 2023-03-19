@@ -2,11 +2,7 @@ import Bullet from './bullet';
 import styles from '../styles/styles';
 
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-} from 'react-native';
+import { View, Text } from 'react-native';
 
 interface Props {
     train: string;
