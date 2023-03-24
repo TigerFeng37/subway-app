@@ -167,14 +167,14 @@ const styles: Record<string, StyleType> = {
       diamond: false,
       bgColor: 'bg-mta-purple',
       accentBgColor: 'bg-purple-100',
-      darkAccentBgColor: 'bg-purple-200',
+      darkAccentBgColor: 'bg-purple-300',
     },
     '7X': {
       letter: '7',
       diamond: true,
       bgColor: 'bg-mta-purple',
       accentBgColor: 'bg-purple-100',
-      darkAccentBgColor: 'bg-purple-200',
+      darkAccentBgColor: 'bg-purple-300',
   },
     'FS': {
         letter: 'S',

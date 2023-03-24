@@ -2,22 +2,16 @@ import Platform from '../components/platform';
 import SimpleStation from '../components/simpleStation';
 import { StationApi } from '../api/station';
 import StationType from '../../types/Station';
+import LocationType from '../../types/Location';
 import styles from '../styles/styles';
 import Loading from '../components/loading';
 import Distance from '../components/distance';
+import StationListType from '../../types/StationList';
 
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  Animated,
-  StatusBar,
-  TouchableOpacity,
-  RefreshControl,
-  Dimensions,
-} from 'react-native';
-import StationListType from '../../types/StationList';
+import { View, Text, ScrollView, StatusBar, TouchableOpacity, RefreshControl, Dimensions } from 'react-native';
+import { getDistance } from 'geolib';
+import GetLocation from 'react-native-get-location';
 
 interface Props {
   updateBackgroundColor: (str: string) => void;
@@ -29,13 +23,21 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
   const [stationList, setStationList] = useState<StationListType>();
   const [detailedStationId, setDetailedStationId] = useState("");
   const [outsideRegion, setOutsideRegion] = useState(false);
+  const [location, setLocation] = useState<LocationType>();
+  const [lastLocationFetch, setLastLocationFetch] = useState(0);
+  
   const screenHeight = Dimensions.get('window').height;
     
-  async function fetchStations() {
-    try {
-      const result = await StationApi.get();
-        if (result !== undefined && result !== null) {
+  // update all data from backend
+  async function fetchStations(currLocation?: LocationType) {
 
+    if (!currLocation) currLocation = await getCurrentPosition();
+
+    if (currLocation) {
+      setLocation(currLocation);
+      try {
+        const result = await StationApi.get(currLocation);
+        if (result !== undefined && result !== null) {
           const stationDistances = Object.keys(result).map( (key, index) => {
             return {stationId: key, distance: result[key].distance}
           });
@@ -59,15 +61,54 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
             }
           }
         };
-    } catch (e) {
-      console.log(e);
+      } catch (e) {
+        console.log(e);
+      }
     }
+    setRefreshing(false);
   };
 
-  const [refreshing, setRefreshing] = useState(false);
-  const onRefresh = () => {
-    setRefreshing(true);
+  // get the users current position and return a LocationType on success
+  const getCurrentPosition = async () => {
+    const now = Date.now();
+    // only get new location if it's been more than three seconds
+    if (now - lastLocationFetch > 3000) {
+      let currLocation;
+      try {
+        currLocation = await GetLocation.getCurrentPosition({
+          enableHighAccuracy: true,
+          timeout: 10000,
+        });
+        return { latitude: currLocation.latitude, longitude: currLocation.longitude };
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setLastLocationFetch(Date.now())
+      }
+    }
+  }
 
+  // calculate the change in user position since the last refresh,
+  // if greater than 50 meters, fetch new station data
+  const calculatePositionChange = async () => {
+    
+    let timeout = 1200;
+    let currLocation = await getCurrentPosition();
+    if (currLocation) {
+      timeout = 0;
+      if (!location) {
+        fetchStations(currLocation);
+        return;
+      }
+      const change = getDistance(location, currLocation);
+      //traveling 20 mph -> 89 meters in 10 seconds. Set our limit as 50 meters
+      if (change > 50) {
+        fetchStations(currLocation);
+        return;
+      }
+    }
+
+    // otherwise, fake the refresh
     if (!expandedPlatform && stationList !== undefined && stationList.keys !== undefined) {
       setDetailedStationId(stationList.keys[0].stationId);
       const train = stationList.data[stationList.keys[0].stationId].trains.find(Boolean);
@@ -75,10 +116,16 @@ const Content: React.FC<Props> = ({ updateBackgroundColor }) => {
         updateBackgroundColor(styles[train].accentBgColor);
       }
     }
-
     setTimeout(() => {
       setRefreshing(false);
-    }, 800);
+    }, timeout)
+  }
+  
+  // for pull down
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = () => {
+    setRefreshing(true);
+    calculatePositionChange();    
   };
 
   // refresh data every 30 seconds

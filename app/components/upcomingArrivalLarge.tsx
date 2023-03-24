@@ -12,7 +12,7 @@ interface Props {
 
 const UpcomingArrivalLarge: React.FC<Props> = ({ train, time, destination }) => {
   return (
-    <View className="w-full flex flex-row py-1 pl-2 my-1 justify-between items-center">
+    <View className="w-full flex flex-row py-0.5 pl-2 my-1 justify-between items-center">
         <View className="flex-initial flex-wrap flex-row items-center justify-start">
             <Bullet style={ styles[train] } />
             <Text style={{flex: 1, flexWrap: 'wrap'}} className="ml-2.5 mb-.5 font-medium text-base">

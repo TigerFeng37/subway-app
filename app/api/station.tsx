@@ -2,83 +2,17 @@ import StationType from '../../types/Station';
 
 import GetLocation from 'react-native-get-location';
 import { Dimensions } from 'react-native';
+import LocationType from '../../types/Location';
 
 export const StationApi = {
-    get: async function () {
+    get: async function (location: LocationType) {
 
       const largeScreen = (Dimensions.get('window').height > 825).toString();
-        
-      let location = null;
-      try {
-        location = await GetLocation.getCurrentPosition({
-          enableHighAccuracy: true,
-          timeout: 10000,
-        });
-      } catch (e) {
-        console.warn(e);
-        try {
-          location = await GetLocation.getCurrentPosition({
-            enableHighAccuracy: false,
-            timeout: 3000,
-          });
-        } catch (e2) {
-          console.warn(e2);
-          return null;
-        }
-      }
-      const { latitude, longitude } = location;
+      
+      const {latitude, longitude} = location;
 
       const apiUrl = '143.244.163.173';
-      const baseUrl = apiUrl + '/api/stations';
-
-      //staten island
-      //const [latitude, longitude] = [40.629863, -74.082427];
-
-      //const [latitude, longitude] = [40.755261, -74.002016];
-
-      //hungry ghost
-      // const latitude = 40.685999;
-      // const longitude = -73.973529;
-
-      //crown heights
-      // const latitude = 40.672277;
-      // const longitude = -73.9576139;
-
-      //grand central
-      // const latitude = 40.7521678;
-      // const longitude = -73.9763401;
-
-      //299 putnam
-      // const latitude = 40.684220;
-      // const longitude = -73.949817;
-
-      //hoyt schermerhorn
-      // const latitude = 40.6888286;
-      // const longitude = -73.985126;
-
-      //Jay st metrotech
-      // const latitude = 40.692265;
-      // const longitude = -73.9864207;
-
-      //Bergen st
-      // const latitude = 40.6854157;
-      // const longitude = -73.9915024;
-
-      //Church Av
-      // const latitude = 40.6437108;
-      // const longitude = -73.9796123;
-
-      //jackson heights
-      // const latitude = 40.746657;
-      // const longitude = -73.890488;
-
-      //woodside
-      // const latitude = 40.745531;
-      // const longitude = -73.902948;
-
-      //tremont ave
-      // const latitude = 40.850276;
-      // const longitude = -73.905297;
+      const baseUrl = apiUrl + '/api/stations';     
 
       try {
           const response = await fetch(`http://${baseUrl}?latitude=${latitude}&longitude=${longitude}&largeScreen=${largeScreen}`, {
