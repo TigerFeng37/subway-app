@@ -30,7 +30,7 @@ const SimpleStation: React.FC<Props> = ({ name, distance, trains, onShow, screen
           <View className="pt-1 flex flex-row flex-wrap gap-y-3">
             {trains.map((train) => 
               <View key={train} className="mr-2">
-                <Bullet style={styles[train]} />
+                <Bullet style={styles[train]} padding={false}/>
               </View>
             )}
           </View>

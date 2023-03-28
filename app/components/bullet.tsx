@@ -9,9 +9,10 @@ import { View, Text, Image } from 'react-native';
 
 interface Props {
     style: StyleType;
+    padding: boolean
 }
 
-const UpcomingArrival: React.FC<Props> = ({ style }) => {
+const UpcomingArrival: React.FC<Props> = ({ style, padding }) => {
 
   const getExpressBullet = (color: string) => {
     switch (color){
@@ -34,7 +35,7 @@ const UpcomingArrival: React.FC<Props> = ({ style }) => {
   }
 
   return (
-    <View className={`${style.bgColor} rounded-full w-8 h-8 my-0.5 mx-0.5`}>
+    <View className={`${style.bgColor} rounded-full w-8 h-8 ${padding ? 'my-0.5 mx-0.5' : ''}`}>
       <Text className="font-medium text-white text-xl my-auto text-center">
         { style.letter }
       </Text>

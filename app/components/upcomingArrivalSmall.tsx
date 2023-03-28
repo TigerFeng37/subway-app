@@ -16,7 +16,7 @@ interface Props {
 const UpcomingArrivalSmall: React.FC<Props> = ({ train, time, fewArrivals }) => {
   return (
     <View className={`rounded-lg flex flex-col items-center ${fewArrivals ? 'mr-3.5' : ''}`}>
-      <Bullet style={ styles[train] } />
+      <Bullet style={ styles[train] }  padding={true}/>
       <Text className="mt-1">
           { time }
       </Text>
