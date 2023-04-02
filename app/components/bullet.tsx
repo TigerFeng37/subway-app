@@ -12,7 +12,7 @@ interface Props {
     padding: boolean
 }
 
-const UpcomingArrival: React.FC<Props> = ({ style, padding }) => {
+const Bullet: React.FC<Props> = ({ style, padding }) => {
 
   const getExpressBullet = (color: string) => {
     switch (color){
@@ -42,4 +42,4 @@ const UpcomingArrival: React.FC<Props> = ({ style, padding }) => {
     </View>
   )
 };
-export default UpcomingArrival;
+export default Bullet;

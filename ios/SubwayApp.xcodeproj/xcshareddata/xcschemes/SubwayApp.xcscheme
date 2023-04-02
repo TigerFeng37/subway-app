@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Here - NYC Subway Arrivals.app"
-               BlueprintName = "Here - NYC Subway Arrivals"
-               ReferencedContainer = "container:Here - NYC Subway Arrivals.xcodeproj">
+               BuildableName = "SubwayApp.app"
+               BlueprintName = "SubwayApp"
+               ReferencedContainer = "container:SubwayApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "Here - NYC Subway ArrivalsTests.xctest"
-               BlueprintName = "Here - NYC Subway ArrivalsTests"
-               ReferencedContainer = "container:Here - NYC Subway Arrivals.xcodeproj">
+               BuildableName = "SubwayAppTests.xctest"
+               BlueprintName = "SubwayAppTests"
+               ReferencedContainer = "container:SubwayApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Here - NYC Subway Arrivals.app"
-            BlueprintName = "Here - NYC Subway Arrivals"
-            ReferencedContainer = "container:Here - NYC Subway Arrivals.xcodeproj">
+            BuildableName = "SubwayApp.app"
+            BlueprintName = "SubwayApp"
+            ReferencedContainer = "container:SubwayApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Here - NYC Subway Arrivals.app"
-            BlueprintName = "Here - NYC Subway Arrivals"
-            ReferencedContainer = "container:Here - NYC Subway Arrivals.xcodeproj">
+            BuildableName = "SubwayApp.app"
+            BlueprintName = "SubwayApp"
+            ReferencedContainer = "container:SubwayApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -10,9 +10,11 @@
 		00E356F31AD99517003FC87E /* SubwayAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SubwayAppTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		42E648E3EEAFAABB574E0D92 /* libPods-Here - NYC Subway Arrivals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB8177CF951C55443E05F9DA /* libPods-Here - NYC Subway Arrivals.a */; };
-		739ECED1525015E973054168 /* libPods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38227F0200A22CF86C87F0DC /* libPods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.a */; };
+		54414A6A82AB8B00A8905B1D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5109ADAC5B35D59CA2AA3E /* ExpoModulesProvider.swift */; };
+		545454241881C90DC6A32969 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B02F9E4B0000734800944A8 /* ExpoModulesProvider.swift */; };
+		736E547EA6DD1D0C63A702DB /* libPods-SubwayApp-SubwayAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B25196AA697D16783FDD1EA2 /* libPods-SubwayApp-SubwayAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		CE047DAA1D8C25AD7CA2EC2D /* libPods-SubwayApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CB94D92172BBA0E646443C /* libPods-SubwayApp.a */; };
 		E8A7D40429B92E1E002E566C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -27,27 +29,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* Here - NYC Subway ArrivalsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Here - NYC Subway ArrivalsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* SubwayAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubwayAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SubwayAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubwayAppTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Here - NYC Subway Arrivals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Here - NYC Subway Arrivals.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* SubwayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubwayApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SubwayApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = SubwayApp/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SubwayApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SubwayApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SubwayApp/main.m; sourceTree = "<group>"; };
-		20BEB2D2670FCDD3CB17059E /* Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.debug.xcconfig"; path = "Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		38227F0200A22CF86C87F0DC /* libPods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-SubwayApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp.debug.xcconfig"; path = "Target Support Files/Pods-SubwayApp/Pods-SubwayApp.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-SubwayApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp.release.xcconfig"; path = "Target Support Files/Pods-SubwayApp/Pods-SubwayApp.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-SubwayApp-SubwayAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp-SubwayAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B02F9E4B0000734800944A8 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SubwayApp-SubwayAppTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SubwayApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		82813CA3145AEDE060604995 /* Pods-Here - NYC Subway Arrivals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Here - NYC Subway Arrivals.release.xcconfig"; path = "Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals.release.xcconfig"; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-SubwayApp-SubwayAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp-SubwayAppTests.release.xcconfig"; path = "Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		8FBC7E2AAB189810106293B2 /* Pods-Here - NYC Subway Arrivals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Here - NYC Subway Arrivals.debug.xcconfig"; path = "Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals.debug.xcconfig"; sourceTree = "<group>"; };
-		BF675A2F72AFC0EC386A66A9 /* Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.release.xcconfig"; path = "Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.release.xcconfig"; sourceTree = "<group>"; };
-		EB8177CF951C55443E05F9DA /* libPods-Here - NYC Subway Arrivals.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Here - NYC Subway Arrivals.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F5109ADAC5B35D59CA2AA3E /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SubwayApp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		901473B790E039B9D06C1516 /* Pods-SubwayApp-SubwayAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp-SubwayAppTests.release.xcconfig"; path = "Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		A8DDF79473496C47A40ED7BD /* Pods-SubwayApp-SubwayAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp-SubwayAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B25196AA697D16783FDD1EA2 /* libPods-SubwayApp-SubwayAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SubwayApp-SubwayAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3CB94D92172BBA0E646443C /* libPods-SubwayApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SubwayApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA9C76FC4B3EF4218810367C /* Pods-SubwayApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp.release.xcconfig"; path = "Target Support Files/Pods-SubwayApp/Pods-SubwayApp.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EFAB9BDABB8C91016D833D13 /* Pods-SubwayApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubwayApp.debug.xcconfig"; path = "Target Support Files/Pods-SubwayApp/Pods-SubwayApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				739ECED1525015E973054168 /* libPods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.a in Frameworks */,
+				736E547EA6DD1D0C63A702DB /* libPods-SubwayApp-SubwayAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E648E3EEAFAABB574E0D92 /* libPods-Here - NYC Subway Arrivals.a in Frameworks */,
+				CE047DAA1D8C25AD7CA2EC2D /* libPods-SubwayApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,10 +104,35 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				EB8177CF951C55443E05F9DA /* libPods-Here - NYC Subway Arrivals.a */,
-				38227F0200A22CF86C87F0DC /* libPods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.a */,
+				B3CB94D92172BBA0E646443C /* libPods-SubwayApp.a */,
+				B25196AA697D16783FDD1EA2 /* libPods-SubwayApp-SubwayAppTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D68BAB0A6C20790826C4E68 /* SubwayAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B02F9E4B0000734800944A8 /* ExpoModulesProvider.swift */,
+			);
+			name = SubwayAppTests;
+			sourceTree = "<group>";
+		};
+		65EAC548218324CD8751E6A7 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				6975C76537BB3F8DDF5032CB /* SubwayApp */,
+				3D68BAB0A6C20790826C4E68 /* SubwayAppTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		6975C76537BB3F8DDF5032CB /* SubwayApp */ = {
+			isa = PBXGroup;
+			children = (
+				8F5109ADAC5B35D59CA2AA3E /* ExpoModulesProvider.swift */,
+			);
+			name = SubwayApp;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -126,6 +151,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				65EAC548218324CD8751E6A7 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,8 +161,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Here - NYC Subway Arrivals.app */,
-				00E356EE1AD99517003FC87E /* Here - NYC Subway ArrivalsTests.xctest */,
+				13B07F961A680F5B00A75B9A /* SubwayApp.app */,
+				00E356EE1AD99517003FC87E /* SubwayAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,14 +170,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-SubwayApp.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-SubwayApp.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-SubwayApp-SubwayAppTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-SubwayApp-SubwayAppTests.release.xcconfig */,
-				8FBC7E2AAB189810106293B2 /* Pods-Here - NYC Subway Arrivals.debug.xcconfig */,
-				82813CA3145AEDE060604995 /* Pods-Here - NYC Subway Arrivals.release.xcconfig */,
-				20BEB2D2670FCDD3CB17059E /* Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.debug.xcconfig */,
-				BF675A2F72AFC0EC386A66A9 /* Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.release.xcconfig */,
+				EFAB9BDABB8C91016D833D13 /* Pods-SubwayApp.debug.xcconfig */,
+				BA9C76FC4B3EF4218810367C /* Pods-SubwayApp.release.xcconfig */,
+				A8DDF79473496C47A40ED7BD /* Pods-SubwayApp-SubwayAppTests.debug.xcconfig */,
+				901473B790E039B9D06C1516 /* Pods-SubwayApp-SubwayAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -159,47 +181,47 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* Here - NYC Subway ArrivalsTests */ = {
+		00E356ED1AD99517003FC87E /* SubwayAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Here - NYC Subway ArrivalsTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SubwayAppTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				DDF47A5B7B39DACCD8864C4E /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				346D4AF3E802F36B449182DC /* [CP] Embed Pods Frameworks */,
+				8E9002557A6C9309D6B20521 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = "Here - NYC Subway ArrivalsTests";
+			name = SubwayAppTests;
 			productName = SubwayAppTests;
-			productReference = 00E356EE1AD99517003FC87E /* Here - NYC Subway ArrivalsTests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* SubwayAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Here - NYC Subway Arrivals */ = {
+		13B07F861A680F5B00A75B9A /* SubwayApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Here - NYC Subway Arrivals" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SubwayApp" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				573BA643B35FDEA5992F1700 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				6F78498532A1D22020237A86 /* [CP] Embed Pods Frameworks */,
+				0A84CD2FAAEC223E90FF675E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Here - NYC Subway Arrivals";
+			name = SubwayApp;
 			productName = SubwayApp;
-			productReference = 13B07F961A680F5B00A75B9A /* Here - NYC Subway Arrivals.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* SubwayApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -219,7 +241,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Here - NYC Subway Arrivals" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SubwayApp" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -232,8 +254,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Here - NYC Subway Arrivals */,
-				00E356ED1AD99517003FC87E /* Here - NYC Subway ArrivalsTests */,
+				13B07F861A680F5B00A75B9A /* SubwayApp */,
+				00E356ED1AD99517003FC87E /* SubwayAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -274,24 +296,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		0A84CD2FAAEC223E90FF675E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp/Pods-SubwayApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp/Pods-SubwayApp-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SubwayApp/Pods-SubwayApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		346D4AF3E802F36B449182DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		573BA643B35FDEA5992F1700 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,14 +345,48 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SubwayApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		6F78498532A1D22020237A86 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp/Pods-SubwayApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp/Pods-SubwayApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SubwayApp/Pods-SubwayApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E9002557A6C9309D6B20521 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SubwayApp-SubwayAppTests/Pods-SubwayApp-SubwayAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDF47A5B7B39DACCD8864C4E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -328,62 +401,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Here - NYC Subway Arrivals-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SubwayApp-SubwayAppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals/Pods-Here - NYC Subway Arrivals-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests/Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -413,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* SubwayAppTests.m in Sources */,
+				545454241881C90DC6A32969 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +445,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				54414A6A82AB8B00A8905B1D /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +454,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Here - NYC Subway Arrivals */;
+			target = 13B07F861A680F5B00A75B9A /* SubwayApp */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -438,7 +462,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20BEB2D2670FCDD3CB17059E /* Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.debug.xcconfig */;
+			baseConfigurationReference = A8DDF79473496C47A40ED7BD /* Pods-SubwayApp-SubwayAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -447,7 +471,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SubwayAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,21 +482,22 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Here - NYC Subway Arrivals.app/Here - NYC Subway Arrivals";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubwayApp.app/SubwayApp";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF675A2F72AFC0EC386A66A9 /* Pods-Here - NYC Subway Arrivals-Here - NYC Subway ArrivalsTests.release.xcconfig */;
+			baseConfigurationReference = 901473B790E039B9D06C1516 /* Pods-SubwayApp-SubwayAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = SubwayAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -483,19 +508,20 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Here - NYC Subway Arrivals.app/Here - NYC Subway Arrivals";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubwayApp.app/SubwayApp";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FBC7E2AAB189810106293B2 /* Pods-Here - NYC Subway Arrivals.debug.xcconfig */;
+			baseConfigurationReference = EFAB9BDABB8C91016D833D13 /* Pods-SubwayApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 93F7J2F5S4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SubwayApp/Info.plist;
@@ -505,14 +531,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cwest144.subway-app";
-				PRODUCT_NAME = "Here - NYC Subway Arrivals";
+				PRODUCT_NAME = SubwayApp;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -525,11 +552,11 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82813CA3145AEDE060604995 /* Pods-Here - NYC Subway Arrivals.release.xcconfig */;
+			baseConfigurationReference = BA9C76FC4B3EF4218810367C /* Pods-SubwayApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 93F7J2F5S4;
 				INFOPLIST_FILE = SubwayApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Here;
@@ -538,14 +565,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cwest144.subway-app";
-				PRODUCT_NAME = "Here - NYC Subway Arrivals";
+				PRODUCT_NAME = SubwayApp;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -604,7 +632,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -669,7 +697,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -695,7 +723,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Here - NYC Subway ArrivalsTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SubwayAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -704,7 +732,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Here - NYC Subway Arrivals" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SubwayApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -713,7 +741,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Here - NYC Subway Arrivals" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SubwayApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
