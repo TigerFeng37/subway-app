@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/blur": "^4.3.0",
     "expo": "^48.0.9",
     "expo-blur": "~12.2.2",
     "geolib": "^3.3.3",
