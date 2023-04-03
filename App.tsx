@@ -1,11 +1,17 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { NativeBaseProvider, Text } from 'native-base';
 
 import Index from './app/pages/home';
+import theme from './theme';
 
 function App(): JSX.Element {
   return (
-    <Index />
+    <NativeBaseProvider theme={theme}>
+      {/* <Text>
+        Hi
+      </Text> */}
+      <Index />
+    </NativeBaseProvider>
   );
 }
 

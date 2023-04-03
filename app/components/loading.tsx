@@ -1,11 +1,11 @@
 import styles from '../styles/styles';
 
 import React from 'react';
-import { Text } from 'react-native';
+import { Text } from 'native-base';
 
 const Loading = () => {
   return (
-    <Text className="text-xl">
+    <Text fontSize="xl">
       Loading ... 
     </Text>
   )

@@ -7,7 +7,8 @@ import Distance from '../components/distance';
 import StationListType from '../../types/StationList';
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StatusBar, SafeAreaView, TouchableOpacity, RefreshControl, Dimensions, NativeSyntheticEvent, NativeScrollEvent, Vibration } from 'react-native';
+import { StatusBar, RefreshControl, Dimensions, NativeSyntheticEvent, NativeScrollEvent, Vibration } from 'react-native';
+import { View, Text, ScrollView, Box, HStack, VStack, Container, Pressable, Spacer } from 'native-base';
 import { getDistance } from 'geolib';
 import GetLocation from 'react-native-get-location';
 import Modal from 'react-native-modal';
@@ -149,7 +150,7 @@ const Index = () => {
   
     if (expandedPlatform === "" && currentScrollPosition > scrollEndThreshold) {
       setModalVisible(true);
-      Vibration.vibrate();
+      Vibration.vibrate([0]);
     }
   };
 
@@ -165,110 +166,110 @@ const Index = () => {
       >
         <InfoModal setModalVisible={setModalVisible} />
       </Modal>
-    <SafeAreaView className = {`${backgroundColor}`}>
+    <Box backgroundColor={backgroundColor} >
       { expandedPlatform === "" && 
-        <View className="absolute bottom-10 w-full">
-          <View className="flex flex-row justify-center">
+        <View position="absolute" bottom={10} w="full">
+          <HStack justifyContent="center">
             <AnimatedArrow scrollPosition={scrollPosition} />
-          </View>
+          </HStack>
         </View>
       }
-      <ScrollView contentInsetAdjustmentBehavior="automatic" scrollEnabled={false} >
+      {/* <ScrollView contentInsetAdjustmentBehavior="automatic" h="100%" scrollEnabled={false} > */}
         {outsideRegion ?
-          <View className={`h-screen w-screen px-8 justify-center`}>
-            <View className="flex flex-col w-full gap-2 mx-auto mb-16 items-center py-3 bg-gray-200 rounded-xl shadow">
-              <Text className="text-xl">
+          <View h="100%" w="100%" px={8} justifyContent="center">
+            <VStack w="full" space-between={2} mx="auto" mb={16} alignItems="center" py={3} bg="gray.200" rounded="xl" shadow={3}>
+              <Text fontSize="xl">
                 You are too far from the city!
               </Text>
-              <Text className="text-md pb-3">
+              <Text fontSize="md" pb={3}>
                 (Come back we miss you)
               </Text>
-            </View>
+            </VStack>
           </View>
         :
         <>
-        
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          onScroll={handleScroll}
-          scrollEventThrottle={50}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor="black"
-            />
-        }>
-          <TouchableOpacity onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")} activeOpacity={0.8}>
-            <View className={`h-screen w-screen px-8 justify-center`}>
-              <View className={`flex flex-col items-center ${screenHeight < 750 ? 'mb-6' : 'mb-20'}`}>
-                {(stationList !== undefined && detailedStationId !== undefined && stationList.data[detailedStationId] !== undefined) ?
-                  <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col">
-                    <View className="flex flex-row flex-wrap w-full justify-between items-center" >
-                      {stationList.data[detailedStationId] !== undefined &&
-                        <>
-                          <Text className="font-medium text-xl" style={{flex: 1, flexWrap: 'wrap'}}>
-                            {stationList.data[detailedStationId].name}
-                          </Text>
-                          <Distance distance = {stationList.data[detailedStationId].distance} />
-                        </>
-                      }
-                    </View>
-                    {stationList.data[detailedStationId].platforms.length === 0 ? 
-                      <Text className="mt-2 text-lg">No upcoming trains</Text>
-                      :
-                      Object.keys(stationList.data[detailedStationId].platforms).map( (key, index) =>
-                        (expandedPlatform !== key && expandedPlatform !== "") ? null :
-                          <Platform
-                              key = {stationList.data[detailedStationId].platforms[key].heading}
-                              data = {stationList.data[detailedStationId].platforms[key]}
-                              isExpanded = {expandedPlatform === key}
-                              onShow = {() => setExpandedPlatform(key)}
-                              screenHeight = {screenHeight}
-                          />
-                        )
-                    }
-                  </View>
-                :
-                  <View className="rounded-xl bg-stone-100 shadow w-full pt-1.5 pb-3 px-4 flex flex-col min-h-1/3">
-                  </View>
-                }
-                {(stationList !== undefined && detailedStationId !== undefined && stationList.keys !== undefined) ?
-                  <>
-                    {expandedPlatform === "" &&
+        <Pressable h="100%" onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")}>
+          <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            showsVerticalScrollIndicator={false}
+            onScroll={handleScroll}
+            scrollEventThrottle={50}
+            refreshControl={
+              <RefreshControl
+                progressViewOffset={54}
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor="black"
+              />
+            }
+          >
+            <VStack px={8} flex={1} justifyContent="center">
+              {(stationList !== undefined && detailedStationId !== undefined && stationList.data[detailedStationId] !== undefined) ?
+                <VStack w="full" rounded="xl" bgColor="trueGray.100" shadow={3} pt={1.5} pb={3} px={4} >
+                  <HStack flexWrap="wrap" justifyContent="space-between" alignItems="center" >
+                    {stationList.data[detailedStationId] !== undefined &&
                       <>
-                        {stationList.keys.map( (key, index) => {
-                          if (key.stationId !== detailedStationId) {
-                            const thisStation = stationList.data[key.stationId];
-                            return <SimpleStation
-                                key = {thisStation.name + thisStation.trains[0]}
-                                name = {thisStation.name}
-                                distance = {thisStation.distance}
-                                trains = {thisStation.trains}
-                                screenHeight = {screenHeight}
-                                onShow = {() => {
-                                  setDetailedStationId(thisStation.id);
-                                  const train = thisStation.trains.find(Boolean);
-                                  if (train !== undefined) {
-                                    setBackgroundColor(styles[train].accentBgColor);
-                                  }
-                                }}
-                            />
-                          }
-                        })}
+                        <Text fontWeight="medium" fontSize="xl" flex={1} flexWrap='wrap'>
+                          {stationList.data[detailedStationId].name}
+                        </Text>
+                        <Distance distance = {stationList.data[detailedStationId].distance} />
                       </>
                     }
-                  </>
-                  : 
-                  <View className="rounded-xl bg-stone-100 min-h-1/10 shadow w-full pt-1.5 pb-3 px-4 mt-6"></View>
-                }                
-              </View>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
+                  </HStack>
+                  {stationList.data[detailedStationId].platforms.length === 0 ? 
+                    <Text mt={2} fontSize="lg">No upcoming trains</Text>
+                    :
+                    Object.keys(stationList.data[detailedStationId].platforms).map( (key, index) =>
+                      (expandedPlatform !== key && expandedPlatform !== "") ? null :
+                        <Platform
+                            key = {stationList.data[detailedStationId].platforms[key].heading}
+                            data = {stationList.data[detailedStationId].platforms[key]}
+                            isExpanded = {expandedPlatform === key}
+                            onShow = {() => setExpandedPlatform(key)}
+                            screenHeight = {screenHeight}
+                        />
+                      )
+                  }
+                </VStack>
+              :
+                <View rounded="xl" bgColor="trueGray.100" shadow={3} w="full" pt={1.5} pb={3} px={4} minH="33%">
+                </View>
+              }
+              {(stationList !== undefined && detailedStationId !== undefined && stationList.keys !== undefined) ?
+                <>
+                  {expandedPlatform === "" &&
+                    <>
+                      {stationList.keys.map( (key, index) => {
+                        if (key.stationId !== detailedStationId) {
+                          const thisStation = stationList.data[key.stationId];
+                          return <SimpleStation
+                              key = {thisStation.name + thisStation.trains[0]}
+                              name = {thisStation.name}
+                              distance = {thisStation.distance}
+                              trains = {thisStation.trains}
+                              screenHeight = {screenHeight}
+                              onShow = {() => {
+                                setDetailedStationId(thisStation.id);
+                                const train = thisStation.trains.find(Boolean);
+                                if (train !== undefined) {
+                                  setBackgroundColor(styles[train].accentBgColor);
+                                }
+                              }}
+                          />
+                        }
+                      })}
+                    </>
+                  }
+                </>
+                : 
+                <View rounded="xl" bgColor="trueGray.100" minH="10%" shadow={3} w="full" pt={1.5} pb={3} px={4} mt={6}></View>
+              } 
+            </VStack>
+          </ScrollView>
+        </Pressable>
       </>}
-      </ScrollView>
-    </SafeAreaView>
+      {/* </ScrollView> */}
+    </Box>
   </>
   )
 };

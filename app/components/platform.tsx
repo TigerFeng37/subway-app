@@ -3,12 +3,7 @@ import UpcomingArrivalLarge from './upcomingArrivalLarge';
 import PlatformType from '../../types/Platform';
 
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { View, Text, Pressable, HStack, VStack } from 'native-base';
 
 interface Props {
   data: PlatformType;
@@ -24,16 +19,16 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) =>
   const fewArrivals = (data.departures.length < 5);
 
   return (
-    <TouchableOpacity onPress={onShow} disabled={isExpanded} activeOpacity={0.8}>
-      <TouchableWithoutFeedback disabled={!isExpanded} >
-        <View className={`bg-white shadow-sm rounded-lg flex flex-col pt-1 pb-2.5 px-3 ${screenHeight < 700 ? 'my-1' : 'my-1.5'}`}>
-            <View className="flex flex-row justify-between items-center">
-              <Text className={`text-xl ${screenHeight < 700 ? 'mb-1' : 'mb-2'}`}>
+    <Pressable onPress={onShow} disabled={isExpanded}>
+      <Pressable disabled={!isExpanded}>
+        <VStack bgColor="white" shadow={1} rounded="lg" pt={1} pb={2.5} px={3} my={screenHeight < 700 ? '1' : '1.5'}>
+            <HStack justifyContent="space-between" alignItems="center">
+              <Text fontSize="xl" mb={screenHeight < 700 ? '1' : '2'}>
                   { data.heading }
               </Text>
-            </View>
+            </HStack>
             { isExpanded ? 
-              <View className="flex flex-col gap-2">
+              <VStack space={2}>
                 {data.departures.slice(0, screenHeight < 825 ? 9 : 11).map((prop, key) => 
                   <UpcomingArrivalLarge
                     key={prop.key}
@@ -42,9 +37,9 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) =>
                     destination={prop.destination}
                   />
                 )}
-              </View>
+              </VStack>
             : 
-              <View className={`w-full flex flex-row ${fewArrivals ? 'justify-start' : 'justify-between'}`}>
+              <HStack justifyContent={fewArrivals ? 'flex-start' : 'space-between'}>
                 {data.departures.slice(0, screenHeight > 900 ? 6 : 5).map((prop, key) =>
                   <UpcomingArrivalSmall
                     key={prop.key}
@@ -53,11 +48,11 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) =>
                     fewArrivals={fewArrivals}
                   />
                 )}
-              </View>
+              </HStack>
             }
-        </View>
-      </TouchableWithoutFeedback>
-    </TouchableOpacity>
+        </VStack>
+      </Pressable>
+    </Pressable>
   );
 };
 export default Platform;
