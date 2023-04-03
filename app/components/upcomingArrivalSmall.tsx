@@ -2,10 +2,7 @@ import Bullet from './bullet';
 import styles from '../styles/styles';
 
 import React, {useState} from 'react';
-import {
-  View,
-  Text
-} from 'react-native';
+import { Text, VStack } from 'native-base';
 
 interface Props {
     train: string;
@@ -15,12 +12,12 @@ interface Props {
 
 const UpcomingArrivalSmall: React.FC<Props> = ({ train, time, fewArrivals }) => {
   return (
-    <View className={`rounded-lg flex flex-col items-center ${fewArrivals ? 'mr-3.5' : ''}`}>
+    <VStack rounded="lg" alignItems="center" mr={fewArrivals ? '3.5' : '0'}>
       <Bullet style={ styles[train] }  padding={true}/>
-      <Text className="mt-1">
+      <Text mt={1}>
           { time }
       </Text>
-    </View>
+    </VStack>
   );
 };
 export default UpcomingArrivalSmall;

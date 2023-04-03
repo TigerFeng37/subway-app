@@ -3,7 +3,7 @@ import styles from '../styles/styles';
 import Distance from './distance';
 
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, Pressable, VStack, HStack } from 'native-base';
 
 interface Props {
     name: string;
@@ -19,23 +19,23 @@ const SimpleStation: React.FC<Props> = ({ name, distance, trains, onShow, screen
   const bgColor = first !== undefined ? styles[first].darkAccentBgColor : 'bg-white';
 
   return (
-    <TouchableOpacity onPress={onShow} className="w-full" activeOpacity={0.8}>
-      <View className={`rounded-xl ${bgColor} shadow w-full pt-1.5 pb-3 px-4 flex flex-col ${screenHeight > 900 ? 'mt-6' : 'mt-4'}`}>
-          <View className="flex flex-row w-full justify-between items-center">
-              <Text className="font-medium text-xl leading-6 ml-0.5" style={{flex: 1, flexWrap: 'wrap'}}>
+    <Pressable onPress={onShow} w="full">
+      <VStack rounded="xl" bgColor={bgColor} shadow={3} w="full" pt={1.5} pb={3} px={4} mt={screenHeight > 900 ? '6' : '4'}>
+          <HStack w="full" justifyContent="space-between" alignItems="center">
+              <Text fontWeight="medium" fontSize="xl" lineHeight={20} ml={0.5} flexWrap="wrap" > 
                   { name }
               </Text>
               <Distance distance = {distance} />
-          </View>
-          <View className="pt-1 flex flex-row flex-wrap gap-y-3">
+          </HStack>
+          <HStack pt={1} flexWrap="wrap" space-between-y={3}>
             {trains.map((train) => 
-              <View key={train} className="mr-2">
+              <View key={train} mr={2}>
                 <Bullet style={styles[train]} padding={false}/>
               </View>
             )}
-          </View>
-      </View>
-    </TouchableOpacity>
+          </HStack>
+      </VStack>
+    </Pressable>
   );
 };
 export default SimpleStation;

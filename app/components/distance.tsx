@@ -1,7 +1,7 @@
 import styles from '../styles/styles';
 
 import React, {useState} from 'react';
-import { Text, Image } from 'react-native';
+import { Text, Image } from 'native-base';
 
 interface Props {
     distance: number;
@@ -10,12 +10,13 @@ interface Props {
 const Distance: React.FC<Props> = ({ distance }) => {
     if (distance === 0 || distance === 0.05) {
       return <Image
-        className='w-4 h-5'
+        w={4} h={5}
         source={require('../../images/here.png')}
+        alt="here logo"
       />
     }
     const distanceStr = distance.toString().replace(/^0+/, '') + ' mi';
-    return <Text className="text-lg">
+    return <Text fontSize="lg">
       {distanceStr}
     </Text>
 };

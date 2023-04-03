@@ -5,7 +5,7 @@ import orangeExpress from '../../images/express-bullets/orange.png';
 import purpleExpress from '../../images/express-bullets/purple.png';
 
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image } from 'native-base';
 
 interface Props {
     style: StyleType;
@@ -26,8 +26,8 @@ const Bullet: React.FC<Props> = ({ style, padding }) => {
   if (style.diamond) {
     return (
       <>
-        <Image source={getExpressBullet(style.bgColor)} className="w-9 h-9"/>
-        <Text className="font-medium text-white text-xl my-auto text-center absolute ml-3 pt-1">
+        <Image source={getExpressBullet(style.bgColor)} w={9} h={9} alt="express bullet"/>
+        <Text fontWeight="medium" color="white" fontSize="xl" my="auto" style={{ textAlign: "center"}} position="absolute" ml={3} pt={1}>
           { style.letter }
         </Text>
       </>
@@ -35,8 +35,8 @@ const Bullet: React.FC<Props> = ({ style, padding }) => {
   }
 
   return (
-    <View className={`${style.bgColor} rounded-full w-8 h-8 ${padding ? 'my-0.5 mx-0.5' : ''}`}>
-      <Text className="font-medium text-white text-xl my-auto text-center">
+    <View bgColor={style.bgColor} rounded="full" w={8} h={8} my={padding ? '0.5' : '0'} mx={padding ? '0.5' : '0'}>
+      <Text fontWeight="medium" color="white" fontSize="xl" my="auto" style={{ textAlign: "center"}}>
         { style.letter }
       </Text>
     </View>
