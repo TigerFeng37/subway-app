@@ -21,9 +21,9 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) =>
   return (
     <Pressable onPress={onShow} disabled={isExpanded}>
       <Pressable disabled={!isExpanded}>
-        <VStack bgColor="white" shadow={1} rounded="lg" pt={1} pb={2.5} px={3} my={screenHeight < 700 ? '1' : '1.5'}>
+        <VStack bgColor="white" shadow={1} rounded="lg" pt={1} pb={2} px={3} my={screenHeight < 700 ? '1' : '1.5'}>
             <HStack justifyContent="space-between" alignItems="center">
-              <Text fontSize="xl" mb={screenHeight < 700 ? '1' : '2'}>
+              <Text fontSize="xl" mb={screenHeight < 700 ? '1' : '1.5'}>
                   { data.heading }
               </Text>
             </HStack>

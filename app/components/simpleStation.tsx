@@ -20,7 +20,7 @@ const SimpleStation: React.FC<Props> = ({ name, distance, trains, onShow, screen
 
   return (
     <Pressable onPress={onShow} w="full">
-      <VStack rounded="xl" bgColor={bgColor} shadow={3} w="full" pt={1.5} pb={3} px={4} mt={screenHeight > 900 ? '6' : '4'}>
+      <VStack rounded="xl" bgColor={bgColor} shadow={3} w="full" pt={2} pb={3} px={4} mt={screenHeight > 900 ? '6' : '4'}>
           <HStack w="full" justifyContent="space-between" alignItems="center">
               <Text fontWeight="medium" fontSize="xl" lineHeight={20} ml={0.5} flexWrap="wrap" > 
                   { name }

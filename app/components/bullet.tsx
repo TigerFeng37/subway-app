@@ -16,9 +16,9 @@ const Bullet: React.FC<Props> = ({ style, padding }) => {
 
   const getExpressBullet = (color: string) => {
     switch (color){
-      case 'bg-mta-green': return greenExpress;
-      case 'bg-mta-purple': return purpleExpress;
-      case 'bg-mta-orange': return orangeExpress;
+      case 'mtaGreen': return greenExpress;
+      case 'mtaPurple': return purpleExpress;
+      case 'mtaOrange': return orangeExpress;
       default: greenExpress;
     }
   } 

@@ -18,10 +18,10 @@ import InfoModal from '../components/InfoModal';
 
 const Index = () => {
 
-  const [expandedPlatform, setExpandedPlatform] = useState("");
+  const [expandedPlatform, setExpandedPlatform] = useState<string>("");
   const [stationList, setStationList] = useState<StationListType>();
-  const [detailedStationId, setDetailedStationId] = useState("");
-  const [outsideRegion, setOutsideRegion] = useState(false);
+  const [detailedStationId, setDetailedStationId] = useState<string>("");
+  const [outsideRegion, setOutsideRegion] = useState<Boolean>(false);
   const [location, setLocation] = useState<LocationType>();
   const [lastLocationFetch, setLastLocationFetch] = useState(0);
   const { colors } = useTheme();
@@ -181,7 +181,7 @@ const Index = () => {
       </Modal>
     <Animated.View style={[{backgroundColor: backgroundColor}]} >
       { expandedPlatform === "" && 
-        <View position="absolute" bottom={10} w="full">
+        <View position="absolute" bottom={8} w="full">
           <HStack justifyContent="center">
             <AnimatedArrow scrollPosition={scrollPosition} />
           </HStack>
@@ -219,7 +219,7 @@ const Index = () => {
               {(stationList !== undefined && detailedStationId !== undefined && stationList.data[detailedStationId] !== undefined) ?
                 <VStack w="full" rounded="xl" bgColor="trueGray.100" shadow={2} pt={1.5} pb={3} px={4} >
                   <HStack flexWrap="wrap" justifyContent="space-between" alignItems="center" >
-                    <Text fontWeight="medium" fontSize="xl" flex={1} flexWrap='wrap'>
+                    <Text fontWeight="medium" fontSize="xl" flex={1} lineHeight={24} flexWrap='wrap'>
                       {stationList.data[detailedStationId].name}
                     </Text>
                     <Distance distance = {stationList.data[detailedStationId].distance} />
