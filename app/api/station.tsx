@@ -21,9 +21,10 @@ export const StationApi = {
           });
 
           if (response.status >= 300 || response.status < 200) {
-              throw new Error(
-                  `Error submitting GET on /station endpoint with status code ${response.status} and message `
-              );
+            const responseBody = await response.text();
+            throw new Error(
+                `Error submitting GET on /station endpoint with status code ${response.status} and message ${responseBody}`
+            );
           }
           
           const data = await response.json();

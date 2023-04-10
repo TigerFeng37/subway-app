@@ -6,7 +6,7 @@ import styles from '../styles/styles';
 import Distance from '../components/distance';
 import StationListType from '../../types/StationList';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StatusBar, RefreshControl, Dimensions, NativeSyntheticEvent, NativeScrollEvent, Vibration } from 'react-native';
 import { View, Text, ScrollView, HStack, VStack, Pressable, useTheme } from 'native-base';
 import { getDistance } from 'geolib';
@@ -15,6 +15,7 @@ import Modal from 'react-native-modal';
 import AnimatedArrow from '../components/animatedArrow';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 import InfoModal from '../components/InfoModal';
+import UpdatedContext from '../contexts/UpdatedContext';
 
 const Index = () => {
 
@@ -24,7 +25,11 @@ const Index = () => {
   const [outsideRegion, setOutsideRegion] = useState<Boolean>(false);
   const [location, setLocation] = useState<LocationType>();
   const [lastLocationFetch, setLastLocationFetch] = useState(0);
+  const updatedContext = useContext(UpdatedContext);
   const { colors } = useTheme();
+
+  const REFRESH_MS = 30000
+  const [intervalTime, setIntervalTime] = useState<number>(REFRESH_MS);
   
   const screenHeight = Dimensions.get('window').height;
     
@@ -43,30 +48,33 @@ const Index = () => {
           });
           stationDistances.sort((a, b) => a.distance - b.distance);
           setStationList({keys: stationDistances, data: result});
-
-          // order the stations by distance and set which station is expanded
-          if (!Object.keys(result).includes(detailedStationId)) {  
-            setDetailedStationId(stationDistances[0].stationId);
-
-            if (stationDistances[0].distance > 25) {
-              setOutsideRegion(true);
-              return;
-            }
-            setOutsideRegion(false);
-
-            setExpandedPlatform("");
-            const train = result[stationDistances[0].stationId].trains.find(Boolean);
-            if (train !== undefined) {
-              changeBackgroundColor(styles[train].accentBgColor);
-            }
-          }
+          updatedContext?.setUpdated(Date.now());
         };
       } catch (e) {
         console.log(e);
       }
     }
     setRefreshing(false);
-  };
+  }
+
+  useEffect(() => {
+    if (stationList === undefined) return;
+    if (stationList.keys[0].distance > 25) {
+      setOutsideRegion(true);
+      return;
+    } else {
+      setOutsideRegion(false);
+    }
+    // if detailedStationId is outdated, reset the display
+    if (!Object.keys(stationList.data).includes(detailedStationId)) {
+      setDetailedStationId(stationList.keys[0].stationId);
+      setExpandedPlatform("");
+      const train = stationList.data[stationList.keys[0].stationId].trains.find(Boolean);
+      if (train !== undefined) {
+        changeBackgroundColor(styles[train].accentBgColor);
+      }
+    }
+  }, [stationList, detailedStationId])
 
   // get the users current position and return a LocationType on success
   const getCurrentPosition = async () => {
@@ -126,21 +134,25 @@ const Index = () => {
   }
   
   // refresh data every 30 seconds
-  const REFRESH_MS = 30000;
   useEffect(() => {
     fetchStations();
     const interval = setInterval(() => {
       fetchStations();
-    }, REFRESH_MS);
+    }, intervalTime);
     return () => clearInterval(interval) // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
-  }, [])
+  }, [intervalTime])
+
+  // Whenever outsideRegion changes, update the interval time
+  useEffect(() => {
+    setIntervalTime(outsideRegion ? 300000 : REFRESH_MS);
+  }, [outsideRegion]);
 
   // for pull down
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = () => {
     setRefreshing(true);
-    calculatePositionChange();    
-  };
+    calculatePositionChange();
+  }
 
   // for pulling up
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -154,9 +166,9 @@ const Index = () => {
   
     if (expandedPlatform === "" && currentScrollPosition > scrollEndThreshold) {
       setModalVisible(true);
-      Vibration.vibrate([0]);
+      Vibration.vibrate([400]);
     }
-  };
+  }
 
   //animated background color change
   const backgroundColor = useSharedValue('white');
@@ -165,7 +177,7 @@ const Index = () => {
     function index(obj,i) {return obj[i]};
     const hexColor = color.split('.').reduce(index, colors);    
     backgroundColor.value = withTiming(hexColor, { duration: 700 });
-  }  
+  }
 
   return (
     <>
@@ -180,7 +192,7 @@ const Index = () => {
         <InfoModal setModalVisible={setModalVisible} />
       </Modal>
     <Animated.View style={[{backgroundColor: backgroundColor}]} >
-      { expandedPlatform === "" && 
+      { expandedPlatform === "" && !outsideRegion &&
         <View position="absolute" bottom={8} w="full">
           <HStack justifyContent="center">
             <AnimatedArrow scrollPosition={scrollPosition} />
@@ -216,7 +228,7 @@ const Index = () => {
         >
           <Pressable h="100%" onPress={() => setExpandedPlatform("")} disabled={(expandedPlatform === "")}>
             <VStack px={8} flex={1} justifyContent="center">
-              {(stationList !== undefined && detailedStationId !== undefined && stationList.data[detailedStationId] !== undefined) ?
+              {(stationList !== undefined && detailedStationId !== undefined && stationList.data[detailedStationId] !== undefined && updatedContext !== undefined) ?
                 <VStack w="full" rounded="xl" bgColor="trueGray.100" shadow={2} pt={1.5} pb={3} px={4} >
                   <HStack flexWrap="wrap" justifyContent="space-between" alignItems="center" >
                     <Text fontWeight="medium" fontSize="xl" flex={1} lineHeight={24} flexWrap='wrap'>
@@ -235,6 +247,7 @@ const Index = () => {
                             isExpanded = {expandedPlatform === key}
                             onShow = {() => setExpandedPlatform(key)}
                             screenHeight = {screenHeight}
+                            outdated = {updatedContext.updated < Date.now() - 90000}
                         />
                       )
                   }
@@ -246,27 +259,25 @@ const Index = () => {
               {(stationList !== undefined && detailedStationId !== undefined && stationList.keys !== undefined) ?
                 <>
                   {expandedPlatform === "" &&
-                    <>
-                      {stationList.keys.map( (key, index) => {
-                        if (key.stationId !== detailedStationId) {
-                          const thisStation = stationList.data[key.stationId];
-                          return <SimpleStation
-                              key = {thisStation.name + thisStation.trains[0]}
-                              name = {thisStation.name}
-                              distance = {thisStation.distance}
-                              trains = {thisStation.trains}
-                              screenHeight = {screenHeight}
-                              onShow = {() => {
-                                setDetailedStationId(thisStation.id);
-                                const train = thisStation.trains.find(Boolean);
-                                if (train !== undefined) {
-                                  changeBackgroundColor(styles[train].accentBgColor);
-                                }
-                              }}
-                          />
-                        }
-                      })}
-                    </>
+                    stationList.keys.map( (key, index) => {
+                      if (key.stationId !== detailedStationId) {
+                        const thisStation = stationList.data[key.stationId];
+                        return <SimpleStation
+                            key = {thisStation.name + thisStation.trains[0]}
+                            name = {thisStation.name}
+                            distance = {thisStation.distance}
+                            trains = {thisStation.trains}
+                            screenHeight = {screenHeight}
+                            onShow = {() => {
+                              setDetailedStationId(thisStation.id);
+                              const train = thisStation.trains.find(Boolean);
+                              if (train !== undefined) {
+                                changeBackgroundColor(styles[train].accentBgColor);
+                              }
+                            }}
+                        />
+                      }
+                    })
                   }
                 </>
                 : 

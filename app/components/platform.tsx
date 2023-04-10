@@ -10,9 +10,10 @@ interface Props {
   isExpanded: boolean;
   onShow: () => void;
   screenHeight: number;
+  outdated: boolean;
 }
 
-const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) => {
+const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight, outdated}) => {
 
   if (data.departures.length === 0) return null;
 
@@ -35,6 +36,7 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) =>
                     train={prop.train}
                     time={prop.time}
                     destination={prop.destination}
+                    outdated={outdated}
                   />
                 )}
               </VStack>
@@ -46,6 +48,7 @@ const Platform: React.FC<Props> = ({ data, isExpanded, onShow, screenHeight}) =>
                     train={prop.train}
                     time={prop.time}
                     fewArrivals={fewArrivals}
+                    outdated={outdated}
                   />
                 )}
               </HStack>
