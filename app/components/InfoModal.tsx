@@ -7,7 +7,7 @@ import twitter from '../../images/icons/twitter.png';
 import linkedin from '../../images/icons/linkedin.png';
 import github from '../../images/icons/github.png';
 import upArrow from '../../images/icons/up_arrow.png';
-
+import license from '../../images/license.png';
 
 interface Props {
   setModalVisible: Dispatch<SetStateAction<boolean>>;
@@ -33,7 +33,7 @@ const InfoModal: React.FC<Props> = ({setModalVisible}) => {
             </HStack>
             </VStack>
           </Pressable>
-          <HStack space={5} pt={6} alignItems="center">
+          <HStack space={5} pt={3} alignItems="center">
             <Pressable onPress={() => Linking.openURL('https://twitter.com/cwest144')}>
               <Image source={twitter} w={7} h={7} alt="twitter logo"/>
             </Pressable>
@@ -44,6 +44,13 @@ const InfoModal: React.FC<Props> = ({setModalVisible}) => {
               <Image source={github} w={7} h={7} alt="github logo"/>
             </Pressable>
           </HStack>
+          <View bgColor="white" mt={6}>
+            <Image source={license} w={32} h={12} resizeMode="contain" alt="MTA license logo"/>
+          </View>
+          <Text textAlign="center" fontSize="xs" px="8" lineHeight="16" pt={1}>
+            Subway Route Symbols &reg; Metropolitan Transportation Authority. Used with permission.
+          </Text>
+          
         </View>
       </VStack>
     </BlurView>

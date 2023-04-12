@@ -17,7 +17,7 @@ const UpcomingArrivalLarge: React.FC<Props> = ({ train, time, destination, outda
         <HStack flex={1} alignItems="center" justifyContent="flex-start" >
             <Bullet style={ styles[train] } padding={true}/>
             {destination &&
-              <Text flexWrap='wrap' lineHeight={17} flex={1} ml={2.5} mb={0.5} fontWeight="medium">
+              <Text flexWrap='wrap' lineHeight={17} flex={1} ml={2.5} mb={0.5} fontWeight="medium" fontSize="md">
                   {destination}
               </Text>
             }
@@ -25,7 +25,7 @@ const UpcomingArrivalLarge: React.FC<Props> = ({ train, time, destination, outda
         { outdated ? 
           <Box bgColor="coolGray.300" rounded="sm" w="10" h="3.5" mx={1} mt={1.5} mb={0.5}/>
           :
-          <Text ml={0.5} mb={0.5}>
+          <Text ml={0.5} mb={0.5} fontSize="md">
               { time }
           </Text>          
         }
